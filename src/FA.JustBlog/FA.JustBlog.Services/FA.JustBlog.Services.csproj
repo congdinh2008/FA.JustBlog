@@ -52,10 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseServices\BaseServices.cs" />
-    <Compile Include="BookServices.cs" />
+    <Compile Include="PostServices.cs" />
     <Compile Include="CategoryServices.cs" />
     <Compile Include="BaseServices\IBaseService.cs" />
-    <Compile Include="IBookServices.cs" />
+    <Compile Include="IPostServices.cs" />
     <Compile Include="ICategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

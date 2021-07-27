@@ -1,9 +1,8 @@
-﻿using BookStore.Data.Infrastructure;
-using BookStore.Models;
-using FA.JustBlog.Services;
+﻿using FA.JustBlog.Data.Infrastructure;
+using FA.JustBlog.Models.Common;
 using FA.JustBlog.Services.BaseServices;
 
-namespace BookStore.Business
+namespace FA.JustBlog.Services
 {
     public class CategoryServices : BaseServices<Category>, ICategoryServices
     {
