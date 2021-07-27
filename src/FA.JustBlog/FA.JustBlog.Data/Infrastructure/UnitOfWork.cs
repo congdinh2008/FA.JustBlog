@@ -24,6 +24,11 @@ namespace BookStore.Data.Infrastructure
         public IGenericRepository<Category> CategoryRepository =>
             _categoryRepository ?? new GenericRepository<Category>(_dbContext);
 
+        private IGenericRepository<Tag> _tagRepository;
+
+        public IGenericRepository<Tag> TagRepository =>
+            _tagRepository ?? new GenericRepository<Tag>(_dbContext);
+
         private IPostRepository _bookRepository;
 
         public IPostRepository PostRepository =>
