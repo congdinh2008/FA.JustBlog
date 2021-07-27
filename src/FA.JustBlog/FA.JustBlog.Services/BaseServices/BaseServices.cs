@@ -88,24 +88,14 @@ namespace FA.JustBlog.Services.BaseServices
             return await _unitOfWork.SaveChangesAsync() > 0;
         }
 
-        public bool DeleteRange(Guid[] ids)
+        public IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return _unitOfWork.GenericRepository<TEntity>().GetQuery().ToList();
         }
 
-        public virtual bool DeleteRange(IEnumerable<TEntity> entities)
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            throw new NotImplementedException();
-        }
-
-        public virtual Task<bool> DeleteRangeAsync(Guid[] ids)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual Task<bool> DeleteRangeAsync(IEnumerable<TEntity> entities)
-        {
-            throw new NotImplementedException();
+            return await _unitOfWork.GenericRepository<TEntity>().GetQuery().ToListAsync();
         }
 
         public virtual async Task<Paginated<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null,
@@ -125,12 +115,12 @@ namespace FA.JustBlog.Services.BaseServices
 
         public virtual TEntity GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _unitOfWork.GenericRepository<TEntity>().GetById(id);
         }
 
-        public virtual Task<TEntity> GetByIdAsync(Guid id)
+        public virtual async Task<TEntity> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.GenericRepository<TEntity>().GetByIdAsync(id);
         }
 
         public virtual bool Update(TEntity entity)
@@ -143,9 +133,14 @@ namespace FA.JustBlog.Services.BaseServices
             return _unitOfWork.SaveChanges() > 0;
         }
 
-        public virtual Task<bool> UpdateAsync(TEntity entity)
+        public virtual async Task<bool> UpdateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            if (entity == null)
+            {
+                throw new ArgumentNullException();
+            }
+            _unitOfWork.GenericRepository<TEntity>().Update(entity);
+            return await _unitOfWork.SaveChangesAsync() > 0;
         }
     }
 }

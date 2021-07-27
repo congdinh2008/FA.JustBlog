@@ -25,17 +25,13 @@ namespace FA.JustBlog.Services.BaseServices
 
         Task<bool> DeleteAsync(Guid id);
 
-        bool DeleteRange(Guid[] ids);
-
-        Task<bool> DeleteRangeAsync(Guid[] ids);
-
-        bool DeleteRange(IEnumerable<TEntity> entities);
-
-        Task<bool> DeleteRangeAsync(IEnumerable<TEntity> entities);
-
         TEntity GetById(Guid id);
 
         Task<TEntity> GetByIdAsync(Guid id);
+
+        IEnumerable<TEntity> GetAll();
+
+        Task<IEnumerable<TEntity>> GetAllAsync();
 
         /// <summary>
         /// Return entities with paging, filtering, ordering
