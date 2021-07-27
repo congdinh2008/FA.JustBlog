@@ -1,4 +1,5 @@
 ﻿using FA.JustBlog.Models.BaseEntities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,5 +20,7 @@ namespace FA.JustBlog.Models.Common
         public string Description { get; set; }
 
         public int Count { get; set; }
+
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }

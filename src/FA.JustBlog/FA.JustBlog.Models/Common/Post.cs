@@ -1,5 +1,6 @@
 ﻿using FA.JustBlog.Models.BaseEntities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -30,6 +31,8 @@ namespace FA.JustBlog.Models.Common
         [ForeignKey("Category")]
         public Guid CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
+
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }
