@@ -27,7 +27,7 @@ namespace FA.JustBlog.Services
 
         public async Task<IEnumerable<Post>> GetLatestPostAsync(int size)
         {
-            return await _unitOfWork.PostRepository.GetQuery().OrderByDescending(p => p.PostedOn).Take(size).ToListAsync();
+            return await _unitOfWork.PostRepository.GetQuery().OrderByDescending(p => p.PublishedDate).Take(size).ToListAsync();
         }
 
         public async Task<IEnumerable<Post>> GetPostsByCategoryAsync(string category)
@@ -38,7 +38,7 @@ namespace FA.JustBlog.Services
         public async Task<IEnumerable<Post>> GetPostsByMonthAsync(DateTime monthYear)
         {
             return await _unitOfWork.PostRepository.GetQuery()
-                .Where(p => p.PostedOn.Year == monthYear.Year && p.PostedOn.Month == monthYear.Month)
+                .Where(p => p.PublishedDate.Year == monthYear.Year && p.PublishedDate.Month == monthYear.Month)
                 .ToListAsync();
         }
 

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -26,6 +27,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.2</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -155,16 +157,228 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\breadcrumb.css" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\responsive.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\_button.css" />
+    <Content Include="assets\css\_feature.css" />
+    <Content Include="assets\css\_footer.css" />
+    <Content Include="assets\css\_team.css" />
+    <Content Include="assets\css\_testimonials.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\images\blog-1.jpg" />
+    <Content Include="assets\images\blog-2.jpg" />
+    <Content Include="assets\images\blog-3.jpg" />
+    <Content Include="assets\images\blog-4.jpg" />
+    <Content Include="assets\images\bootstrap-solid.svg" />
+    <Content Include="assets\img\banner\banner-2.jpg" />
+    <Content Include="assets\img\banner\banner.jpg" />
+    <Content Include="assets\img\banner\home-banner.jpg" />
+    <Content Include="assets\img\blog\add-1.jpg" />
+    <Content Include="assets\img\blog\add.jpg" />
+    <Content Include="assets\img\blog\author.png" />
+    <Content Include="assets\img\blog\c1.jpg" />
+    <Content Include="assets\img\blog\c2.jpg" />
+    <Content Include="assets\img\blog\c3.jpg" />
+    <Content Include="assets\img\blog\c4.jpg" />
+    <Content Include="assets\img\blog\c5.jpg" />
+    <Content Include="assets\img\blog\c6.jpg" />
+    <Content Include="assets\img\blog\cat-post\cat-post-1.jpg" />
+    <Content Include="assets\img\blog\cat-post\cat-post-2.jpg" />
+    <Content Include="assets\img\blog\cat-post\cat-post-3.jpg" />
+    <Content Include="assets\img\blog\causes\causes-1.jpg" />
+    <Content Include="assets\img\blog\causes\causes-2.jpg" />
+    <Content Include="assets\img\blog\causes\causes-3.jpg" />
+    <Content Include="assets\img\blog\choice\choice-1.jpg" />
+    <Content Include="assets\img\blog\choice\choice-2.jpg" />
+    <Content Include="assets\img\blog\choice\choice-3.jpg" />
+    <Content Include="assets\img\blog\choice\choice-4.jpg" />
+    <Content Include="assets\img\blog\feature-img1.jpg" />
+    <Content Include="assets\img\blog\l-news\l-news-1.jpg" />
+    <Content Include="assets\img\blog\l-news\l-news-2.jpg" />
+    <Content Include="assets\img\blog\l-news\l-news-3.jpg" />
+    <Content Include="assets\img\blog\l-news\l-news-4.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-1.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-2.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-3.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-4.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-5.jpg" />
+    <Content Include="assets\img\blog\news-blog.jpg" />
+    <Content Include="assets\img\blog\next.jpg" />
+    <Content Include="assets\img\blog\popular-post\post1.jpg" />
+    <Content Include="assets\img\blog\popular-post\post2.jpg" />
+    <Content Include="assets\img\blog\popular-post\post3.jpg" />
+    <Content Include="assets\img\blog\popular-post\post4.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-1.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-10.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-11.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-12.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-13.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-14.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-2.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-3.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-4.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-5.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-6.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-7.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-8.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-9.jpg" />
+    <Content Include="assets\img\blog\post-img1.jpg" />
+    <Content Include="assets\img\blog\post-img2.jpg" />
+    <Content Include="assets\img\blog\prev.jpg" />
+    <Content Include="assets\img\blog\user-img.jpg" />
+    <Content Include="assets\img\elements\a.jpg" />
+    <Content Include="assets\img\elements\a2.jpg" />
+    <Content Include="assets\img\elements\d.jpg" />
+    <Content Include="assets\img\elements\disabled-check.png" />
+    <Content Include="assets\img\elements\disabled-radio.png" />
+    <Content Include="assets\img\elements\f1.jpg" />
+    <Content Include="assets\img\elements\f2.jpg" />
+    <Content Include="assets\img\elements\f3.jpg" />
+    <Content Include="assets\img\elements\f4.jpg" />
+    <Content Include="assets\img\elements\f5.jpg" />
+    <Content Include="assets\img\elements\f6.jpg" />
+    <Content Include="assets\img\elements\f7.jpg" />
+    <Content Include="assets\img\elements\f8.jpg" />
+    <Content Include="assets\img\elements\g1.jpg" />
+    <Content Include="assets\img\elements\g2.jpg" />
+    <Content Include="assets\img\elements\g3.jpg" />
+    <Content Include="assets\img\elements\g4.jpg" />
+    <Content Include="assets\img\elements\g5.jpg" />
+    <Content Include="assets\img\elements\g6.jpg" />
+    <Content Include="assets\img\elements\g7.jpg" />
+    <Content Include="assets\img\elements\g8.jpg" />
+    <Content Include="assets\img\elements\primary-check.png" />
+    <Content Include="assets\img\elements\primary-radio.png" />
+    <Content Include="assets\img\elements\success-check.png" />
+    <Content Include="assets\img\elements\success-radio.png" />
+    <Content Include="assets\img\elements\user1.png" />
+    <Content Include="assets\img\elements\user2.png" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\footer-logo.png" />
+    <Content Include="assets\img\home-blog\blog-1.jpg" />
+    <Content Include="assets\img\home-blog\blog-2.jpg" />
+    <Content Include="assets\img\home-blog\blog-3.jpg" />
+    <Content Include="assets\img\home-blog\blog-4.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-1.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-2.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-3.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-4.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-5.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-6.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-7.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-8.jpg" />
+    <Content Include="assets\img\instagram\Image-01.jpg" />
+    <Content Include="assets\img\instagram\Image-02.jpg" />
+    <Content Include="assets\img\instagram\Image-03.jpg" />
+    <Content Include="assets\img\instagram\Image-04.jpg" />
+    <Content Include="assets\img\instagram\Image-05.jpg" />
+    <Content Include="assets\img\instagram\Image-06.jpg" />
+    <Content Include="assets\img\instagram\Image-07.jpg" />
+    <Content Include="assets\img\instagram\Image-08.jpg" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\post-slider\post-cat-1.jpg" />
+    <Content Include="assets\img\post-slider\post-cat-2.jpg" />
+    <Content Include="assets\img\post-slider\post-s-1.jpg" />
+    <Content Include="assets\img\post-slider\post-s-2.jpg" />
+    <Content Include="assets\img\post-slider\post-s-3.jpg" />
+    <Content Include="assets\img\post-slider\post-s-4.jpg" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\contact.js" />
+    <Content Include="assets\js\gmaps.min.js" />
+    <Content Include="assets\js\jquery-3.2.1.min.js" />
+    <Content Include="assets\js\jquery.ajaxchimp.min.js" />
+    <Content Include="assets\js\jquery.form.js" />
+    <Content Include="assets\js\jquery.validate.min.js" />
+    <Content Include="assets\js\mail-script.js" />
+    <Content Include="assets\js\popper.js" />
+    <Content Include="assets\js\stellar.js" />
+    <Content Include="assets\js\theme.js" />
+    <Content Include="assets\vendors\animate-css\animate.css" />
+    <Content Include="assets\vendors\animate-css\wow.min.js" />
+    <Content Include="assets\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.css" />
+    <Content Include="assets\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="assets\vendors\bootstrap-datepicker\bootstrap-select.css" />
+    <Content Include="assets\vendors\bootstrap-datepicker\bootstrap-select.js" />
+    <Content Include="assets\vendors\isotope\imagesloaded.pkgd.min.js" />
+    <Content Include="assets\vendors\isotope\isotope-min.js" />
+    <Content Include="assets\vendors\jquery-ui\jquery-ui.css" />
+    <Content Include="assets\vendors\jquery-ui\jquery-ui.js" />
+    <Content Include="assets\vendors\lightbox\simpleLightbox.css" />
+    <Content Include="assets\vendors\lightbox\simpleLightbox.min.js" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.svg" />
+    <Content Include="assets\vendors\linericon\style.css" />
+    <Content Include="assets\vendors\nice-select\css\nice-select.css" />
+    <Content Include="assets\vendors\nice-select\css\style.css" />
+    <Content Include="assets\vendors\nice-select\js\jquery.nice-select.js" />
+    <Content Include="assets\vendors\nice-select\js\jquery.nice-select.min.js" />
+    <Content Include="assets\vendors\owl-carousel\assets\ajax-loader.gif" />
+    <Content Include="assets\vendors\owl-carousel\assets\animated.css" />
+    <Content Include="assets\vendors\owl-carousel\assets\owl.carousel.css" />
+    <Content Include="assets\vendors\owl-carousel\owl.carousel.min.css" />
+    <Content Include="assets\vendors\owl-carousel\owl.carousel.min.js" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="assets\css\breadcrumb.css.map" />
+    <Content Include="assets\css\style.css.map" />
+    <Content Include="assets\css\_button.css.map" />
+    <Content Include="assets\css\_feature.css.map" />
+    <Content Include="assets\css\_footer.css.map" />
+    <Content Include="assets\css\_team.css.map" />
+    <Content Include="assets\css\_testimonials.css.map" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\img\elements\_DS_Store" />
+    <Content Include="assets\scss\breadcrumb.scss" />
+    <Content Include="assets\scss\style.scss" />
+    <Content Include="assets\scss\_blog.scss" />
+    <Content Include="assets\scss\_button.scss" />
+    <Content Include="assets\scss\_contact.scss" />
+    <Content Include="assets\scss\_elements.scss" />
+    <Content Include="assets\scss\_footer.scss" />
+    <Content Include="assets\scss\_header.scss" />
+    <Content Include="assets\scss\_megazin.scss" />
+    <Content Include="assets\scss\_predefine.scss" />
+    <Content Include="assets\scss\_variables.scss" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.eot" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.ttf" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.woff" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.woff2" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -176,6 +390,77 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -191,20 +476,23 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\_LastestPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
@@ -223,11 +511,18 @@
       <Name>FA.JustBlog.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

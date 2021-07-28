@@ -17,8 +17,14 @@ namespace FA.JustBlog.WebMVC.Controllers
         // GET: Posts
         public async Task<ActionResult> Index()
         {
-            var posts = await _postServices.GetAllAsync();
-            return View(posts);
+            var lastestPosts = await _postServices.GetLatestPostAsync(5);
+            return View(lastestPosts);
+        }
+
+        public async Task<ActionResult> LastestPosts()
+        {
+            var lastestPosts = await _postServices.GetLatestPostAsync(5);
+            return PartialView(lastestPosts);
         }
     }
 }

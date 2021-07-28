@@ -17,6 +17,9 @@ namespace FA.JustBlog.Models.Common
         [MaxLength(1000, ErrorMessage = "The {0} must less than {1} characters")]
         public string ShortDescription { get; set; }
 
+        [StringLength(255, ErrorMessage = "The {0} must between {2} and {1} characters", MinimumLength = 4)]
+        public string ImageUrl { get; set; }
+
         [Required(ErrorMessage = "The {0} is required")]
         public string PostContent { get; set; }
 
@@ -26,7 +29,7 @@ namespace FA.JustBlog.Models.Common
 
         public bool Published { get; set; }
 
-        public DateTime PostedOn { get; set; }
+        public DateTime PublishedDate { get; set; }
 
         [ForeignKey("Category")]
         public Guid CategoryId { get; set; }
