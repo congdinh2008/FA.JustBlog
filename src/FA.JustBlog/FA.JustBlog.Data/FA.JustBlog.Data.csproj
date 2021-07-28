@@ -51,9 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\PostRepository.cs" />
     <Compile Include="Infrastructure\BaseRepositories\GenericRepository.cs" />
-    <Compile Include="Infrastructure\IPostRepository.cs" />
     <Compile Include="Infrastructure\BaseRepositories\IGenericRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
@@ -66,6 +64,10 @@
     <Compile Include="Migrations\202107271008219_ChangeSchemaPostTag.cs" />
     <Compile Include="Migrations\202107271008219_ChangeSchemaPostTag.designer.cs">
       <DependentUpon>202107271008219_ChangeSchemaPostTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107280418557_AddImageUrlForPostAndChangePostedOnToPublishedDate.cs" />
+    <Compile Include="Migrations\202107280418557_AddImageUrlForPostAndChangePostedOnToPublishedDate.designer.cs">
+      <DependentUpon>202107280418557_AddImageUrlForPostAndChangePostedOnToPublishedDate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107271008219_ChangeSchemaPostTag.resx">
       <DependentUpon>202107271008219_ChangeSchemaPostTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107280418557_AddImageUrlForPostAndChangePostedOnToPublishedDate.resx">
+      <DependentUpon>202107280418557_AddImageUrlForPostAndChangePostedOnToPublishedDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

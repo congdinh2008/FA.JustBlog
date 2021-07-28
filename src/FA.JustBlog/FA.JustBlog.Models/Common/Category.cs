@@ -1,4 +1,5 @@
 ﻿using FA.JustBlog.Models.BaseEntities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,5 +18,7 @@ namespace FA.JustBlog.Models.Common
 
         [MaxLength(500, ErrorMessage = "The {0} must less than {1} characters")]
         public string Description { get; set; }
+
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }

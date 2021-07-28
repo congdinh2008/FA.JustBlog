@@ -1,5 +1,8 @@
-﻿using FA.JustBlog.Models.Common;
+﻿using FA.JustBlog.Models.BaseEntities;
+using FA.JustBlog.Models.Common;
+using System;
 using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace FA.JustBlog.Data
 {
@@ -27,6 +30,42 @@ namespace FA.JustBlog.Data
                     pt.MapRightKey("TagId");
                     pt.ToTable("PostTags", "common");
                 });
+        }
+
+        public override int SaveChanges()
+        {
+            BeforeSaveChanges();
+            return base.SaveChanges();
+        }
+
+        public override async Task<int> SaveChangesAsync()
+        {
+            BeforeSaveChanges();
+            return await base.SaveChangesAsync();
+        }
+
+        private void BeforeSaveChanges()
+        {
+            var entities = this.ChangeTracker.Entries();
+            foreach (var entry in entities)
+            {
+                if (entry.Entity is IBaseEntity entityBase)
+                {
+                    var now = DateTime.UtcNow;
+                    switch (entry.State)
+                    {
+                        case EntityState.Modified:
+                            entityBase.UpdatedAt = now;
+                            break;
+
+                        case EntityState.Added:
+                            entityBase.InsertedAt = now;
+                            entityBase.UpdatedAt = now;
+                            break;
+                    }
+                }
+
+            }
         }
     }
 }
