@@ -51,9 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\PostRepository.cs" />
     <Compile Include="Infrastructure\BaseRepositories\GenericRepository.cs" />
-    <Compile Include="Infrastructure\IPostRepository.cs" />
     <Compile Include="Infrastructure\BaseRepositories\IGenericRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
