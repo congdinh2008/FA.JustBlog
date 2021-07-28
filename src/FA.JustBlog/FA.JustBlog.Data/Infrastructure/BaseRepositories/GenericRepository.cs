@@ -123,11 +123,6 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
             return await DbSet.FindAsync(id);
         }
 
-        public virtual IQueryable<T> GetQuery()
-        {
-            return DbSet;
-        }
-
         public virtual async Task<IEnumerable<T>> GetByPageAsync(Expression<Func<T, bool>> condition, int size, int page)
         {
             return await DbSet.Where(condition).Skip(size * (page - 1)).Take(size).ToListAsync();
@@ -151,6 +146,11 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
             }
 
             return orderBy != null ? orderBy(query) : query;
+        }
+
+        public virtual IQueryable<T> GetQuery()
+        {
+            return DbSet;
         }
 
         public IQueryable<T> GetQuery(Expression<Func<T, bool>> where)

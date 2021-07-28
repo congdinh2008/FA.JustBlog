@@ -12,7 +12,7 @@ namespace FA.JustBlog.Services.BaseServices
 {
     public class BaseServices<TEntity> : IBaseService<TEntity> where TEntity : BaseEntity
     {
-        private readonly IUnitOfWork _unitOfWork;
+        protected readonly IUnitOfWork _unitOfWork;
 
         public BaseServices(IUnitOfWork unitOfWork)
         {
