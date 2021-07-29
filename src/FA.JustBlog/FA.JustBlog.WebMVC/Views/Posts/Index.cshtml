@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Post>
+﻿@model Paginated<Post>
 @{
     ViewBag.Title = "Index";
 }
 
 @foreach (var item in Model)
 {
-    <h1>@item.Title</h1>
+    @Html.Partial("_PostOverview", @item)
 }
 

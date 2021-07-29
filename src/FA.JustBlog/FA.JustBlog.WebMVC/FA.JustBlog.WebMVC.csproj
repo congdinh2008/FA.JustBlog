@@ -487,6 +487,8 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_LastestPost.cshtml" />
+    <Content Include="Views\Shared\_PostOverview.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -498,6 +500,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FA.JustBlog.Common\FA.JustBlog.Common.csproj">
+      <Project>{3B6300C4-C8F9-41B6-A2C8-CBE93901D78D}</Project>
+      <Name>FA.JustBlog.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FA.JustBlog.Data\FA.JustBlog.Data.csproj">
       <Project>{896B2C8C-7688-4F64-A2AE-1D61610E7575}</Project>
       <Name>FA.JustBlog.Data</Name>
@@ -537,6 +543,8 @@
           <DevelopmentServerPort>51001</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>https://localhost:44302/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>https://localhost:44302/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
