@@ -5,22 +5,5 @@
 
 @foreach (var item in Model)
 {
-
-
-    <div class="item">
-        <div class="post_s_item">
-            <div class="post_img">
-                <img src="../assets/images/@item.ImageUrl" alt="@item.ImageUrl">
-            </div>
-            <div class="post_text">
-                <a class="cat" href="#">@item.Category.Name</a>
-                <a href="single-blog.html"><h4>@item.Title</h4></a>
-                <p>@item.ShortDescription</p>
-                <div class="date">
-                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> @item.PublishedDate</a>
-                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    @Html.Partial("_PostOverview", item)
 }
