@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FA.JustBlog.Models.Common
 {
     [Table("Categories", Schema = "common")]
-    public class Category: BaseEntity
+    public class Category : BaseEntity
     {
         [Required(ErrorMessage = "The {0} is required")]
         [StringLength(255, ErrorMessage = "The {0} must between {2} and {1} characters", MinimumLength = 3)]
@@ -14,6 +14,7 @@ namespace FA.JustBlog.Models.Common
 
         [Required(ErrorMessage = "The {0} is required")]
         [StringLength(255, ErrorMessage = "The {0} must between {2} and {1} characters", MinimumLength = 3)]
+        [Display(Name = "Url Slug")]
         public string UrlSlug { get; set; }
 
         [MaxLength(500, ErrorMessage = "The {0} must less than {1} characters")]

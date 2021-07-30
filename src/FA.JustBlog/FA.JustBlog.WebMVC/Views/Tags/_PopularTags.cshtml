@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Tag>
+
+<h3>Tag Clouds</h3>
+
+@foreach (var item in Model)
+{
+    <a href="#" class="btn rounded-pill bg-info">
+        @item.Name
+    </a>
+}
