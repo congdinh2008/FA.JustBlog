@@ -53,7 +53,9 @@
                 @RenderBody()
             </div>
             <div class="col-md-4 pl-5 bg-custom">
-                Right Menu
+                @Html.Action("LastestPosts", "Posts")
+                <hr />
+                @Html.Action("PopularTags", "Tags")
             </div>
         </div>
         @Html.Partial("_Footer")
