@@ -51,7 +51,7 @@ namespace FA.JustBlog.Data
             {
                 if (entry.Entity is IBaseEntity entityBase)
                 {
-                    var now = DateTime.UtcNow;
+                    var now = DateTime.Now;
                     switch (entry.State)
                     {
                         case EntityState.Modified:
