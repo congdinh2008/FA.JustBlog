@@ -100,7 +100,8 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
         // GET: Admin/CategoryManagement/Create
         public ActionResult Create()
         {
-            return View();
+            var categoryViewModel = new CategoryViewModel();
+            return View(categoryViewModel);
         }
 
         // POST: Admin/CategoryManagement/Create
@@ -109,16 +110,22 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create(Category category)
+        public ActionResult Create(CategoryViewModel categoryViewModel)
         {
             if (ModelState.IsValid)
             {
-                category.Id = Guid.NewGuid();
+                var category = new Category
+                {
+                    Id = Guid.NewGuid(),
+                    Name = categoryViewModel.Name,
+                    UrlSlug = categoryViewModel.UrlSlug,
+                    Description = categoryViewModel.Description,
+                };
                 _categoryServices.Add(category);
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(categoryViewModel);
         }
 
         // GET: Admin/CategoryManagement/Edit/5

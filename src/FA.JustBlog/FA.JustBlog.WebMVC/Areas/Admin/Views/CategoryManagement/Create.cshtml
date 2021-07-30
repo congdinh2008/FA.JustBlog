@@ -1,4 +1,4 @@
-﻿@model FA.JustBlog.Models.Common.Category
+﻿@model CategoryViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -24,7 +24,7 @@
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.UrlSlug, htmlAttributes: new { @class = "control-label" })
             <div>
-                @Html.EditorFor(model => model.UrlSlug, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.UrlSlug, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                 @Html.ValidationMessageFor(model => model.UrlSlug, "", new { @class = "text-danger" })
             </div>
         </div>
