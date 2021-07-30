@@ -30,6 +30,6 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
 
         IQueryable<T> Get(Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            string includeProperties = "");
+            string includeProperties = "", bool canLoadDeleted = false);
     }
 }
