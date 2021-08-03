@@ -18,9 +18,13 @@ namespace FA.JustBlog.Services
 
         Task<IEnumerable<Post>> GetPostsByCategoryAsync(string category);
 
+        Task<IEnumerable<Post>> GetPostsByCategoryAsync(Guid categoryId);
+
         Task<int> CountPostsForTagAsync(string tag);
 
         Task<IEnumerable<Post>> GetPostsByTagAsync(string tag);
+        
+        Task<IEnumerable<Post>> GetPostsByTagAsync(Guid tagId);
     }
 }
 
