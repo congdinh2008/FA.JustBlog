@@ -15,6 +15,24 @@ namespace FA.JustBlog.Services
         {
         }
 
+        public override int Add(Post entity)
+        {
+            if (entity.Published)
+            {
+                entity.PublishedDate = DateTime.Now;
+            }
+            return base.Add(entity);
+        }
+
+        public override Task<int> AddAsync(Post entity)
+        {
+            if (entity.Published)
+            {
+                entity.PublishedDate = DateTime.Now;
+            }
+            return base.AddAsync(entity);
+        }
+
         public async Task<int> CountPostsForCategoryAsync(string category)
         {
             return await _unitOfWork.PostRepository.GetQuery().CountAsync(p => p.Category.Name == category);

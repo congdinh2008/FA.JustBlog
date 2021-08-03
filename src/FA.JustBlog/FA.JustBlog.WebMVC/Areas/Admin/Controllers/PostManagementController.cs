@@ -11,18 +11,23 @@ using System.Web.Mvc;
 using FA.JustBlog.Data;
 using FA.JustBlog.Models.Common;
 using FA.JustBlog.Services;
+using FA.JustBlog.WebMVC.Areas.Admin.ViewModels;
 
 namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
 {
     public class PostManagementController : Controller
     {
-
-        private JustBlogDbContext db = new JustBlogDbContext();
         private readonly IPostServices _postServices;
+        private readonly ICategoryServices _categoryServices;
+        private readonly ITagServices _tagServices;
 
-        public PostManagementController(IPostServices postServices)
+        public PostManagementController(IPostServices postServices,
+            ICategoryServices categoryServices,
+            ITagServices tagServices)
         {
             _postServices = postServices;
+            _categoryServices = categoryServices;
+            _tagServices = tagServices;
         }
 
         // GET: Admin/PostManagement
@@ -98,26 +103,14 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
             return View(categories);
         }
 
-        // GET: Admin/PostManagement/Details/5
-        public ActionResult Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
-        }
 
         // GET: Admin/PostManagement/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
-            return View();
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetAll(), "Id", "Name");
+            var postViewModel = new PostViewModel();
+            postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
+            return View(postViewModel);
         }
 
         // POST: Admin/PostManagement/Create
@@ -125,33 +118,57 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,ShortDescription,ImageUrl,PostContent,UrlSlug,Published,PublishedDate,CategoryId,IsDeleted,InsertedAt,UpdatedAt")] Post post)
+        [ValidateInput(false)]
+        public async Task<ActionResult> Create(PostViewModel postViewModel)
         {
             if (ModelState.IsValid)
             {
-                post.Id = Guid.NewGuid();
-                db.Posts.Add(post);
-                db.SaveChanges();
+                var post = new Post
+                {
+                    Id = Guid.NewGuid(),
+                    Title = postViewModel.Title,
+                    UrlSlug = postViewModel.UrlSlug,
+                    ShortDescription = postViewModel.ShortDescription,
+                    ImageUrl = postViewModel.ImageUrl,
+                    PostContent = postViewModel.PostContent,
+                    Published = postViewModel.Published,
+                    CategoryId = postViewModel.CategoryId,
+                    Tags = await GetSelectedTagFromIds(postViewModel.SelectedTagIds)
+                };
+                var result = await _postServices.AddAsync(post);
+
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", post.CategoryId);
-            return View(post);
+            ViewBag.CategoryId = new SelectList(await _categoryServices.GetAllAsync(), "Id", "Name", postViewModel.CategoryId);
+            postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
+            return View(postViewModel);
+        }
+
+        private async Task<ICollection<Tag>> GetSelectedTagFromIds(IEnumerable<Guid> selectedTagIds)
+        {
+            var tags = new List<Tag>();
+
+            var tagEntities = await _tagServices.GetAllAsync();
+
+
+            foreach (var item in tagEntities)
+            {
+                if (selectedTagIds.Any(x => x == item.Id))
+                {
+                    tags.Add(item);
+                }
+            }
+            return tags;
         }
 
         // GET: Admin/PostManagement/Edit/5
-        public ActionResult Edit(Guid? id)
+        public async Task<ActionResult> Edit(Guid? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", post.CategoryId);
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetAll(), "Id", "Name");
+            var post = await _postServices.GetByIdAsync((Guid)id);
+            var postViewModel = new PostViewModel();
+            postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
             return View(post);
         }
 
@@ -160,15 +177,13 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,ShortDescription,ImageUrl,PostContent,UrlSlug,Published,PublishedDate,CategoryId,IsDeleted,InsertedAt,UpdatedAt")] Post post)
+        public async Task<ActionResult> Edit(Post post)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", post.CategoryId);
+            ViewBag.CategoryId = new SelectList(await _categoryServices.GetAllAsync(), "Id", "Name", post.CategoryId);
             return View(post);
         }
 
