@@ -11,22 +11,22 @@ using System.Web.Mvc;
 using FA.JustBlog.Data;
 using FA.JustBlog.Models.Common;
 using FA.JustBlog.Services;
+using FA.JustBlog.WebMVC.Areas.Admin.ViewModels;
 using FA.JustBlog.WebMVC.ViewModels;
 
 namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
 {
-    public class CategoryManagementController : Controller
+    public class TagManagementController : Controller
     {
-        private readonly ICategoryServices _categoryServices;
+        private readonly ITagServices _tagServices;
 
-        public CategoryManagementController(ICategoryServices categoryServices)
+        public TagManagementController(ITagServices tagServices)
         {
-            _categoryServices = categoryServices;
+            _tagServices = tagServices;
         }
 
-        // GET: Admin/CategoryManagement
         public async Task<ActionResult> Index(string sortOrder, string currentFilter, string searchString,
-            int? pageIndex = 1, int pageSize = 2)
+             int? pageIndex = 1, int pageSize = 2)
         {
             ViewData["CurrentPageSize"] = pageSize;
             ViewData["CurrentSort"] = sortOrder;
@@ -48,7 +48,7 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
             ViewData["CurrentFilter"] = searchString;
 
             // x => x.Name.Contains(searchString)
-            Expression<Func<Category, bool>> filter = null;
+            Expression<Func<Tag, bool>> filter = null;
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -56,7 +56,7 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
             }
 
             // q => q.OrderByDescending(c => c.Name)
-            Func<IQueryable<Category>, IOrderedQueryable<Category>> orderBy = null;
+            Func<IQueryable<Tag>, IOrderedQueryable<Tag>> orderBy = null;
 
             switch (sortOrder)
             {
@@ -92,49 +92,48 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
                     break;
             }
 
-            var categories = await _categoryServices.GetAsync(filter: filter, orderBy: orderBy, pageIndex: pageIndex ?? 1, pageSize: pageSize);
+            var tags = await _tagServices.GetAsync(filter: filter, orderBy: orderBy, pageIndex: pageIndex ?? 1, pageSize: pageSize);
 
-            return View(categories);
+            return View(tags);
         }
 
-        [HttpGet]
-        // GET: Admin/CategoryManagement/Create
+        // GET: Admin/TagManagement/Create
         public ActionResult Create()
         {
-            var categoryViewModel = new CategoryViewModel();
-            return View(categoryViewModel);
+            var tagViewModel = new TagViewModel();
+            return View(tagViewModel);
         }
 
-        // POST: Admin/CategoryManagement/Create
+        // POST: Admin/TagManagement/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create(CategoryViewModel categoryViewModel)
+        public ActionResult Create(TagViewModel tagViewModel)
         {
             if (ModelState.IsValid)
             {
-                var category = new Category
+                var tag = new Tag
                 {
                     Id = Guid.NewGuid(),
-                    Name = categoryViewModel.Name,
-                    UrlSlug = categoryViewModel.UrlSlug,
-                    Description = categoryViewModel.Description,
+                    Name = tagViewModel.Name,
+                    UrlSlug = tagViewModel.UrlSlug,
+                    Description = tagViewModel.Description,
                 };
-               var result =  _categoryServices.Add(category);
+                var result = _tagServices.Add(tag);
                 if (result > 0)
                 {
-                    TempData["Message"] = "Create category successful!";
+                    TempData["Message"] = "Create tag successful!";
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    ViewBag.Message = "Create category failed! Please try again!";
+                    ViewBag.Message = "Create tag failed! Please try again!";
                 }
             }
 
-            return View(categoryViewModel);
+            return View(tagViewModel);
         }
 
         // GET: Admin/CategoryManagement/Edit/5
@@ -144,66 +143,52 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var category = _categoryServices.GetById((Guid)id);
-            if (category == null)
+            var tag = _tagServices.GetById((Guid)id);
+            if (tag == null)
             {
                 return HttpNotFound();
             }
 
-            var categoryViewModel = new CategoryViewModel()
+            var tagViewModel = new TagViewModel()
             {
-                Id = category.Id,
-                Name = category.Name,
-                UrlSlug = category.UrlSlug,
-                Description = category.Description
+                Id = tag.Id,
+                Name = tag.Name,
+                UrlSlug = tag.UrlSlug,
+                Description = tag.Description
             };
-            return View(categoryViewModel);
+            return View(tagViewModel);
         }
 
-        // POST: Admin/CategoryManagement/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public async Task<ActionResult> Edit(CategoryViewModel categoryViewModel)
+        public async Task<ActionResult> Edit(TagViewModel tagViewModel)
         {
             if (ModelState.IsValid)
             {
-                var category = await _categoryServices.GetByIdAsync(categoryViewModel.Id);
-                if(category == null)
+                var tag = await _tagServices.GetByIdAsync(tagViewModel.Id);
+                if (tag == null)
                 {
                     return HttpNotFound();
                 }
-                category.Name = categoryViewModel.Name;
-                category.UrlSlug = categoryViewModel.UrlSlug;
-                category.Description = categoryViewModel.Description;
+                tag.Name = tagViewModel.Name;
+                tag.UrlSlug = tagViewModel.UrlSlug;
+                tag.Description = tagViewModel.Description;
 
-                var result = _categoryServices.Update(category);
-                if (result)
-                {
-                    TempData["Message"] = "Update successfully";
-                }
-                else
-                {
-                    TempData["Message"] = "Update failed";
-                }
+                _tagServices.Update(tag);
                 return RedirectToAction("Index");
             }
-            return View(categoryViewModel);
+            return View(tagViewModel);
         }
 
 
-        // POST: Admin/CategoryManagement/Delete/5
         [HttpPost, ActionName("Delete")]
         public ActionResult Delete(Guid id)
         {
-            Category category = _categoryServices.GetById(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            var result = _categoryServices.Delete(category.Id);
+            var tag = _tagServices.GetById(id);
+            var result = _tagServices.Delete(tag.Id);
             if (result)
             {
                 TempData["Message"] = "Delete Successful";
