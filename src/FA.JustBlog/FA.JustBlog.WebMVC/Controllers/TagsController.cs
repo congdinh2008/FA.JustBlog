@@ -11,10 +11,20 @@ namespace FA.JustBlog.WebMVC.Controllers
     public class TagsController : Controller
     {
         private readonly ITagServices _tagServices;
+        private readonly IPostServices _postServices;
 
-        public TagsController(ITagServices tagServices)
+        public TagsController(ITagServices tagServices, IPostServices postServices)
         {
             _tagServices = tagServices;
+            _postServices = postServices;
+        }
+
+        public async Task<ActionResult> Details(Guid id)
+        {
+            var tag =  await _tagServices.GetByIdAsync(id);
+            var posts = await _postServices.GetPostsByTagAsync(id);
+            ViewBag.TagName = tag.Name;
+            return View(posts);
         }
 
         public ActionResult PopularTags()

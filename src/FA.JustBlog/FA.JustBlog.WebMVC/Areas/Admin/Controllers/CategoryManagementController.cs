@@ -97,6 +97,7 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
             return View(categories);
         }
 
+        [HttpGet]
         // GET: Admin/CategoryManagement/Create
         public ActionResult Create()
         {
@@ -178,7 +179,15 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
                 category.UrlSlug = categoryViewModel.UrlSlug;
                 category.Description = categoryViewModel.Description;
 
-                _categoryServices.Update(category);
+                var result = _categoryServices.Update(category);
+                if (result)
+                {
+                    TempData["Message"] = "Update successfully";
+                }
+                else
+                {
+                    TempData["Message"] = "Update failed";
+                }
                 return RedirectToAction("Index");
             }
             return View(categoryViewModel);
@@ -190,6 +199,10 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
         public ActionResult Delete(Guid id)
         {
             Category category = _categoryServices.GetById(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
             var result = _categoryServices.Delete(category.Id);
             if (result)
             {

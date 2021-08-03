@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Post>
+@{
+    ViewBag.Title = ViewBag.CategoryName;
+}
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_PostOverview", item)
+}
+

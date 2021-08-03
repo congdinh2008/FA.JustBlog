@@ -1,8 +1,8 @@
 ﻿<div class="card mb-3">
-    <img src="../assets/img/home-blog/@Model.ImageUrl" class="card-img-top" alt="@Model.Title">
+    <img src="~/assets/img/home-blog/@Model.ImageUrl" class="card-img-top" alt="@Model.Title">
     <div class="card-body">
-        <h5 class="card-title">@Model.Title</h5>
+        <a href="@Url.Action("Details", "Posts", new { id = Model.Id })" class="card-title">@Model.Title</a>
         <p class="card-text">@Model.ShortDescription</p>
-        <a href="#" class="btn btn-primary">More details...</a>
+        <a href="@Url.Action("Details", "Categories", new { id = Model.Category.Id })" class="btn btn-info rounded-pill">@Model.Category.Name</a>
     </div>
 </div>

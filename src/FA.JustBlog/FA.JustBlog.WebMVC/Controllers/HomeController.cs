@@ -20,7 +20,8 @@ namespace FA.JustBlog.WebMVC.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewData["Message"] = "Hello World";
+            ViewBag.Message = "Hello Vietnam";
 
             return View();
         }
