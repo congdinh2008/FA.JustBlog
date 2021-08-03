@@ -1,4 +1,5 @@
 using BookStore.Data.Infrastructure;
+using FA.JustBlog.Data;
 using FA.JustBlog.Data.Infrastructure;
 using FA.JustBlog.Data.Infrastructure.BaseRepositories;
 using FA.JustBlog.Models.Common;
@@ -46,6 +47,7 @@ namespace FA.JustBlog.WebMVC
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
+            container.RegisterSingleton<JustBlogDbContext, JustBlogDbContext>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IGenericRepository<Category>, GenericRepository<Category>>();
             container.RegisterType<IGenericRepository<Tag>, GenericRepository<Tag>>();

@@ -189,7 +189,6 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
 
         // POST: Admin/PostManagement/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(Guid id)
         {
             var result = await _postServices.DeleteAsync(id);
