@@ -87,12 +87,16 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
         {
             // Improve performance for hard delete
             if (isHardDelete)
+            {
                 DbSet.RemoveRange(entities);
+            }
             else
+            {
                 foreach (var entity in entities)
                 {
                     entity.IsDeleted = true;
                 }
+            }
         }
 
         /// <summary>

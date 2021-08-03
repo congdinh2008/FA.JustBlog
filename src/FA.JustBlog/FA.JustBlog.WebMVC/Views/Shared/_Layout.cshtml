@@ -34,8 +34,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="@Url.Action("Index","CategoryManagement", new { area = "admin"})">Category Management</a>
-                        @*<a class="dropdown-item" href="@Url.Action("")">Post Management</a>
-                        <a class="dropdown-item" href="@Url.Action("")">Tag Management</a>*@
+                        <a class="dropdown-item" href="@Url.Action("Index", "PostManagement", new { area = "admin"})">Post Management</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "TagManagement", new { area = "admin"})">Tag Management</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Dashboard</a>
                     </div>

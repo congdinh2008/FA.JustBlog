@@ -810,8 +810,6 @@
     <Content Include="assets\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="assets\js\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Areas\Admin\Views\PostManagement\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\PostManagement\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\PostManagement\Details.cshtml" />
     <Content Include="Areas\Admin\Views\PostManagement\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PostManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\TagManagement\Create.cshtml" />
