@@ -1,4 +1,7 @@
-﻿using FA.JustBlog.Services;
+﻿using FA.JustBlog.Models.Common;
+using FA.JustBlog.Services;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -12,9 +15,10 @@ namespace FA.JustBlog.WebMVC.Controllers
         {
             _postServices = postServices;
         }
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? pageIndex = 1, int? pageSize = 5)
         {
-            var posts = await _postServices.GetAllAsync();
+            Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = x => x.OrderByDescending(p => p.PublishedDate);
+            var posts = await _postServices.GetAsync(filter: null, orderBy: orderBy, pageIndex: pageIndex ?? 1, pageSize: pageSize ?? 5);
             return View(posts);
         }
 
