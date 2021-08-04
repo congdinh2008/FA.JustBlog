@@ -27,8 +27,23 @@ namespace FA.JustBlog.WebMVC.Controllers
 
         public ActionResult LastestPosts()
         {
-            var lastestPosts = Task.Run(()=> _postServices.GetLatestPostAsync(5)).Result ;
-            return PartialView("_LastestPost", lastestPosts);
+            var lastestPosts = Task.Run(()=> _postServices.GetLatestPostAsync(5)).Result;
+            ViewBag.PartialViewTitle = "Lastest Posts";
+            return PartialView("_ListPost", lastestPosts);
+        }
+
+        public ActionResult MostViewPosts()
+        {
+            var lastestPosts = Task.Run(() => _postServices.GetMostViewPostsAsync(5)).Result;
+            ViewBag.PartialViewTitle = "Most View Posts";
+            return PartialView("_ListPost", lastestPosts);
+        }
+
+        public ActionResult HighestPosts()
+        {
+            var lastestPosts = Task.Run(() => _postServices.GetMostViewPostsAsync(5)).Result;
+            ViewBag.PartialViewTitle = "Highest Posts";
+            return PartialView("_ListPost", lastestPosts);
         }
 
         public async Task<ActionResult> Details(Guid id)

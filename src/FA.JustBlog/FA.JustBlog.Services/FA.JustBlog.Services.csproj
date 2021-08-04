@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="BaseServices\BaseServices.cs" />
     <Compile Include="ICategoryServices.cs" />
+    <Compile Include="ICommentServices.cs" />
     <Compile Include="ITagServices.cs" />
     <Compile Include="PostServices.cs" />
     <Compile Include="CategoryServices.cs" />

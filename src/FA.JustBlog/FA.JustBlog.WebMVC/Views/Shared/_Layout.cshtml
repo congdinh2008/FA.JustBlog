@@ -23,6 +23,7 @@
                 <li class="nav-item active">
                     @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
+                @Html.Action("Menu", "Home")
                 <li class="nav-item active">
                     @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
                 </li>
@@ -56,7 +57,12 @@
             <div class="col-md-4 pl-5 bg-custom">
                 @Html.Action("LastestPosts", "Posts")
                 <hr />
+                @Html.Action("MostViewPosts", "Posts")
+                <hr />
+                @Html.Action("HighestPosts", "Posts")
+                <hr />
                 @Html.Action("PopularTags", "Tags")
+                <hr />
             </div>
         </div>
         @Html.Partial("_Footer")

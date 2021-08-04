@@ -31,11 +31,20 @@ namespace FA.JustBlog.Models.Common
 
         public DateTime PublishedDate { get; set; }
 
+        public int ViewCount { get; set; }
+
+        public int RateCount { get; set; }
+
+        public int TotalRate { get; set; }
+
+        public decimal Rate { get => TotalRate / RateCount; }
+
         [ForeignKey("Category")]
         public Guid CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
-
         public virtual ICollection<Tag> Tags { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
