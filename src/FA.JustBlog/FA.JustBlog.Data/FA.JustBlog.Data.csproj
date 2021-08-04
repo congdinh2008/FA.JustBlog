@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202107280418557_AddImageUrlForPostAndChangePostedOnToPublishedDate.designer.cs">
       <DependentUpon>202107280418557_AddImageUrlForPostAndChangePostedOnToPublishedDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108041030082_AddCommentAndModifiedPost.cs" />
+    <Compile Include="Migrations\202108041030082_AddCommentAndModifiedPost.designer.cs">
+      <DependentUpon>202108041030082_AddCommentAndModifiedPost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107280418557_AddImageUrlForPostAndChangePostedOnToPublishedDate.resx">
       <DependentUpon>202107280418557_AddImageUrlForPostAndChangePostedOnToPublishedDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108041030082_AddCommentAndModifiedPost.resx">
+      <DependentUpon>202108041030082_AddCommentAndModifiedPost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

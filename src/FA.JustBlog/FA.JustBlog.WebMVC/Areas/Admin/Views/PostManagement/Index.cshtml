@@ -1,93 +1,114 @@
-﻿@model IEnumerable<FA.JustBlog.Models.Common.Post>
+﻿@model Paginated<Post>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Post Management";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">Post Management</h2>
+<h3>@TempData["Message"]</h3>
+<hr />
+<div>
+    <a href="@Url.Action("Create", "PostManagement")" class="btn btn-primary float-left"><span class="fas fa-plus-square"></span></a>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostContent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UrlSlug)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Published)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PublishedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InsertedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </th>
-        <th></th>
-    </tr>
+    <form action="@Url.Action("Index", "PostManagement")" method="get" class="form-inline float-right">
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control mr-3" id="inputSearch" name="SearchString" value="@ViewData["currentFilter"]" placeholder="Input....">
+            <button type="submit" class=" form-control btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+            <a href="@Url.Action("Index")" class="btn btn-default">
+                <i class="fas fa-redo"></i>
+            </a>
+        </div>
+    </form>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShortDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostContent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UrlSlug)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Published)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PublishedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InsertedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedAt)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@if (!Model.Any())
+{
+    <h3 class="text-center">Don't have a category yet.</h3>
 }
+else
+{
+    <table class="table table-condensed table-bordered">
+        <tr class="d-flex">
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "PostManagement", new { sortOrder = ViewData["TitleSortParm"], currentFilter = ViewData["CurrentFilter"] })">Title</a>
+            </th>
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "PostManagement", new { sortOrder = ViewData["UrlSlugSortParm"], currentFilter = ViewData["CurrentFilter"] })">Url Slug</a>
+            </th>
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "PostManagement", new { sortOrder = ViewData["PublishedSortParm"], currentFilter = ViewData["CurrentFilter"] })">Published</a>
+            </th>
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "PostManagement", new { sortOrder = ViewData["PublishedDateSortParm"], currentFilter = ViewData["CurrentFilter"] })">Published Date</a>
+            </th>
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "PostManagement", new { sortOrder = ViewData["UpdatedAtSortParm"], currentFilter = ViewData["CurrentFilter"] })">Updated At</a>
+            </th>
+            <th class="col-md-2">Manage</th>
+        </tr>
 
-</table>
+        @foreach (var post in Model)
+        {
+            <tr class="d-flex">
+                <td class="col-md-2">
+                    <a href="@Url.Action("Details", new { id = post.Id})">
+                        @post.Title
+                    </a>
+                </td>
+                <td class="col-md-2">
+                    @post.UrlSlug
+                </td>
+                <td class="col-md-2">
+                    @post.Published
+                </td>
+                <td class="col-md-2">
+                    @post.PublishedDate
+                </td>
+                <td class="col-md-2">
+                    @post.UpdatedAt
+                </td>
+                <td class="col-md-2">
+                    <form action="@Url.Action("Delete", "PostManagement", new{ id = post.Id })" method="post">
+                        <a href="@Url.Action("Edit", "PostManagement", new { id = post.Id})" class="btn btn-primary">Edit</a>
+                        <button type="submit" onclick="return confirm('Are you sure to delete this post?');" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            @{
+                var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                ViewBag.PageRange = 3;
+            }
+            <li class="page-item">
+                <a href="@Url.Action("Index", "PostManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=1, currentFilter=ViewData["CurrentFilter"] })"
+                   class="btn page-link @prevDisabled"><<</a>
+            <li class="page-item">
+                <a href="@Url.Action("Index", "PostManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.PageIndex - 1 <= 0 ? 1 : Model.PageIndex - 1), currentFilter=ViewData["CurrentFilter"] })"
+                   class="btn page-link @prevDisabled"><</a>
+            </li>
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                if (i >= Model.PageIndex - ViewBag.PageRange && i <= Model.PageIndex + ViewBag.PageRange)
+                {
+                    <li class="page-item">
+                        <a class="@(i==Model.PageIndex ? "Current" : "") page-link"
+                           href="@Url.Action("Index", "PostManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=i, currentFilter=ViewData["CurrentFilter"] })">@i</a>
+                    </li>
+                }
+            }
+            <li class="page-item">
+                <a href="@Url.Action("Index", "PostManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.PageIndex + 1 > Model.TotalPages ? Model.TotalPages : Model.PageIndex + 1), currentFilter=ViewData["CurrentFilter"] })"
+                   class="btn page-link @nextDisabled">></a>
+            <li class="page-item">
+                <a href="@Url.Action("Index", "PostManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.TotalPages), currentFilter=ViewData["CurrentFilter"] })"
+                   class="btn page-link @nextDisabled">>></a>
+        </ul>
+    </nav>
+}
