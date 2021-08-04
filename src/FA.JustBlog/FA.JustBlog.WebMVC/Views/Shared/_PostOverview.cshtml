@@ -1,8 +1,15 @@
 ﻿<div class="card mb-3">
     <img src="~/assets/img/home-blog/@Model.ImageUrl" class="card-img-top" alt="@Model.Title">
     <div class="card-body">
-        <a href="@Url.Action("Details", "Posts", new { id = Model.Id })" class="card-title">@Model.Title</a>
+        <div class="category-button">
+            <a href="@Url.Action("Details", "Categories", new { id = Model.Category.Id })" class="btn btn-info rounded-pill">@Model.Category.Name</a>
+        </div>
+        <a href="@Url.Action("Details", "Posts", new { id = Model.Id })" class="card-title">
+            <h3>@Model.Title</h3>
+        </a>
         <p class="card-text">@Model.ShortDescription</p>
-        <a href="@Url.Action("Details", "Categories", new { id = Model.Category.Id })" class="btn btn-info rounded-pill">@Model.Category.Name</a>
+    </div>
+    <div class="card-footer">
+        <i class="fas fa-calendar-alt mr-3"></i> @Model.PublishedDate.ToString("MMM dd yyyy")
     </div>
 </div>

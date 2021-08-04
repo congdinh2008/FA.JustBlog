@@ -154,7 +154,9 @@
     <Compile Include="Areas\Admin\Controllers\PostManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagManagementController.cs" />
     <Compile Include="Areas\Admin\ViewModels\BaseViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\PostViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TagViewModel.cs" />
+    <Compile Include="ViewModels\CategoryMenuViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
@@ -810,8 +812,6 @@
     <Content Include="assets\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="assets\js\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Areas\Admin\Views\PostManagement\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\PostManagement\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\PostManagement\Details.cshtml" />
     <Content Include="Areas\Admin\Views\PostManagement\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PostManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\TagManagement\Create.cshtml" />
@@ -924,13 +924,14 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Posts\_LastestPost.cshtml" />
+    <Content Include="Views\Posts\_ListPost.cshtml" />
     <Content Include="Views\Shared\_PostOverview.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Tags\_PopularTags.cshtml" />
     <Content Include="Views\Tags\Details.cshtml" />
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Home\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

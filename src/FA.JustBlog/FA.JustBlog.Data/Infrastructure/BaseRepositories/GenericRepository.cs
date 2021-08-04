@@ -13,7 +13,7 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
         #region Protected Fields
 
         protected readonly JustBlogDbContext _context;
-        protected readonly DbSet<T> DbSet;
+        private readonly DbSet<T> _dbSet;
 
         #endregion
 
@@ -30,14 +30,14 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
             {
                 if (typeOfDbSet == prop.PropertyType)
                 {
-                    DbSet = prop.GetValue(context, null) as DbSet<T>;
+                    _dbSet = prop.GetValue(context, null) as DbSet<T>;
                     break;
                 }
             }
 
-            if (DbSet == null)
+            if (_dbSet == null)
             {
-                DbSet = context.Set<T>();
+                _dbSet = context.Set<T>();
             }
         }
 
@@ -45,13 +45,13 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
 
         public virtual void Add(T entity)
         {
-            DbSet.Add(entity);
+            _dbSet.Add(entity);
         }
 
         public virtual void Add(IEnumerable<T> entities)
         {
             // Use AddRange() to improve the performance.
-            DbSet.AddRange(entities);
+            _dbSet.AddRange(entities);
         }
 
         public virtual void Update(T entity)
@@ -68,7 +68,7 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
         {
             if (isHardDelete)
             {
-                DbSet.Remove(entity);
+                _dbSet.Remove(entity);
             }
             else
             {
@@ -87,12 +87,16 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
         {
             // Improve performance for hard delete
             if (isHardDelete)
-                DbSet.RemoveRange(entities);
+            {
+                _dbSet.RemoveRange(entities);
+            }
             else
+            {
                 foreach (var entity in entities)
                 {
                     entity.IsDeleted = true;
                 }
+            }
         }
 
         /// <summary>
@@ -115,24 +119,24 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
         /// <returns></returns>
         public virtual T GetById(Guid id)
         {
-            return DbSet.Find(id);
+            return _dbSet.Find(id);
         }
 
         public virtual async Task<T> GetByIdAsync(Guid id)
         {
-            return await DbSet.FindAsync(id);
+            return await _dbSet.FindAsync(id);
         }
 
         public virtual async Task<IEnumerable<T>> GetByPageAsync(Expression<Func<T, bool>> condition, int size, int page)
         {
-            return await DbSet.Where(condition).Skip(size * (page - 1)).Take(size).ToListAsync();
+            return await _dbSet.Where(condition).Skip(size * (page - 1)).Take(size).ToListAsync();
         }
 
         public virtual IQueryable<T> Get(Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "", bool canLoadDeleted = false)
         {
-            IQueryable<T> query = DbSet;
+            IQueryable<T> query = _dbSet;
 
             if (filter != null)
             {
@@ -155,12 +159,12 @@ namespace FA.JustBlog.Data.Infrastructure.BaseRepositories
 
         public virtual IQueryable<T> GetQuery()
         {
-            return DbSet;
+            return _dbSet;
         }
 
         public IQueryable<T> GetQuery(Expression<Func<T, bool>> where)
         {
-            return DbSet.Where(where);
+            return _dbSet.Where(where);
         }
 
         #endregion

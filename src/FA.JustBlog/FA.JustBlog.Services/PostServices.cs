@@ -15,6 +15,24 @@ namespace FA.JustBlog.Services
         {
         }
 
+        public override int Add(Post entity)
+        {
+            if (entity.Published)
+            {
+                entity.PublishedDate = DateTime.Now;
+            }
+            return base.Add(entity);
+        }
+
+        public override Task<int> AddAsync(Post entity)
+        {
+            if (entity.Published)
+            {
+                entity.PublishedDate = DateTime.Now;
+            }
+            return base.AddAsync(entity);
+        }
+
         public async Task<int> CountPostsForCategoryAsync(string category)
         {
             return await _unitOfWork.PostRepository.GetQuery().CountAsync(p => p.Category.Name == category);
@@ -25,9 +43,19 @@ namespace FA.JustBlog.Services
             return await _unitOfWork.PostRepository.GetQuery().CountAsync(p => p.Tags.Any(t => t.Name == tag));
         }
 
+        public async Task<IEnumerable<Post>> GetHighestPostsAsync(int size)
+        {
+            return await _unitOfWork.PostRepository.GetQuery().OrderByDescending(p => p.Rate).Take(size).ToListAsync();
+        }
+
         public async Task<IEnumerable<Post>> GetLatestPostAsync(int size)
         {
             return await _unitOfWork.PostRepository.GetQuery().OrderByDescending(p => p.PublishedDate).Take(size).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Post>> GetMostViewPostsAsync(int size)
+        {
+            return await _unitOfWork.PostRepository.GetQuery().OrderByDescending(p => p.ViewCount).Take(size).ToListAsync();
         }
 
         public async Task<IEnumerable<Post>> GetPostsByCategoryAsync(string category)

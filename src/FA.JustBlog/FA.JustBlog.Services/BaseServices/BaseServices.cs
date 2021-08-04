@@ -29,7 +29,7 @@ namespace FA.JustBlog.Services.BaseServices
             return _unitOfWork.SaveChanges();
         }
 
-        public async Task<int> AddAsync(TEntity entity)
+        public virtual async Task<int> AddAsync(TEntity entity)
         {
             if (entity == null)
             {

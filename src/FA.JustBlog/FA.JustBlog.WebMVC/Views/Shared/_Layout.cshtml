@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Just Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -22,6 +23,7 @@
                 <li class="nav-item active">
                     @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
+                @Html.Action("Menu", "Home")
                 <li class="nav-item active">
                     @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
                 </li>
@@ -34,8 +36,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="@Url.Action("Index","CategoryManagement", new { area = "admin"})">Category Management</a>
-                        @*<a class="dropdown-item" href="@Url.Action("")">Post Management</a>
-                        <a class="dropdown-item" href="@Url.Action("")">Tag Management</a>*@
+                        <a class="dropdown-item" href="@Url.Action("Index", "PostManagement", new { area = "admin"})">Post Management</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "TagManagement", new { area = "admin"})">Tag Management</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Dashboard</a>
                     </div>
@@ -55,7 +57,12 @@
             <div class="col-md-4 pl-5 bg-custom">
                 @Html.Action("LastestPosts", "Posts")
                 <hr />
+                @Html.Action("MostViewPosts", "Posts")
+                <hr />
+                @Html.Action("HighestPosts", "Posts")
+                <hr />
                 @Html.Action("PopularTags", "Tags")
+                <hr />
             </div>
         </div>
         @Html.Partial("_Footer")
@@ -63,6 +70,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/fontawesome.min.js" integrity="sha512-KCwrxBJebca0PPOaHELfqGtqkUlFUCuqCnmtydvBSTnJrBirJ55hRG5xcP4R9Rdx9Fz9IF3Yw6Rx40uhuAHR8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

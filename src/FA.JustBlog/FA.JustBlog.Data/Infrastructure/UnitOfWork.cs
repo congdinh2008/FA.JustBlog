@@ -16,6 +16,7 @@ namespace BookStore.Data.Infrastructure
         public UnitOfWork(JustBlogDbContext dbContext)
         {
             _dbContext = dbContext;
+
         }
 
 
@@ -33,6 +34,11 @@ namespace BookStore.Data.Infrastructure
 
         public IGenericRepository<Post> PostRepository =>
             _postRepository ?? new GenericRepository<Post>(_dbContext);
+
+        private IGenericRepository<Comment> _commentRepository;
+
+        public IGenericRepository<Comment> CommentRepository =>
+            _commentRepository ?? new GenericRepository<Comment>(_dbContext);
 
         #region Methods
         public int SaveChanges()
