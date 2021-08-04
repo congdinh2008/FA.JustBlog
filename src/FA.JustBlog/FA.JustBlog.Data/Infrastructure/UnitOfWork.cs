@@ -16,6 +16,7 @@ namespace BookStore.Data.Infrastructure
         public UnitOfWork(JustBlogDbContext dbContext)
         {
             _dbContext = dbContext;
+
         }
 
 
