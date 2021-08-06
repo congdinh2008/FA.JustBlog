@@ -36,7 +36,7 @@ namespace FA.JustBlog.WebMVC.Controllers
         {
             var lastestPosts = Task.Run(() => _postServices.GetMostViewPostsAsync(5)).Result;
             ViewBag.PartialViewTitle = "Most View Posts";
-            return PartialView("_ListPost", lastestPosts);
+            return PartialView("_PopularPosts", lastestPosts);
         }
 
         public ActionResult HighestPosts()

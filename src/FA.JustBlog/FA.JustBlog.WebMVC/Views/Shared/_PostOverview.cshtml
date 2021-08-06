@@ -1,5 +1,5 @@
 ﻿<div class="card mb-3">
-    <img src="~/assets/img/home-blog/@Model.ImageUrl" class="card-img-top" alt="@Model.Title">
+    <img src="~/assets/img/home-blog/@(string.IsNullOrEmpty(Model.ImageUrl)?"blog-1.jpg":Model.ImageUrl)" class="card-img-top" alt="@Model.Title">
     <div class="card-body">
         <div class="category-button">
             <a href="@Url.Action("Details", "Categories", new { id = Model.Category.Id })" class="btn btn-info rounded-pill">@Model.Category.Name</a>
