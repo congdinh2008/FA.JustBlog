@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Just Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Styles.Render("~/Content/css")*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/App_Themes/fantom/css/bootstrap.css">
+    <link rel="stylesheet" href="~/App_Themes/fantom/vendors/linericon/style.css">
+    <link rel="stylesheet" href="~/App_Themes/fantom/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/App_Themes/fantom/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/App_Themes/fantom/vendors/lightbox/simpleLightbox.css">
+    <link rel="stylesheet" href="~/App_Themes/fantom/vendors/nice-select/css/nice-select.css">
+    <link rel="stylesheet" href="~/App_Themes/fantom/vendors/animate-css/animate.css">
+    <link rel="stylesheet" href="~/App_Themes/fantom/vendors/jquery-ui/jquery-ui.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="~/App_Themes/fantom/css/style.css">
+    <link rel="stylesheet" href="~/App_Themes/fantom/css/responsive.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,21 +62,8 @@
         </div>
     </nav>
     <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                @RenderBody()
-            </div>
-            <div class="col-md-4 pl-5 bg-custom">
-                @Html.Action("LastestPosts", "Posts")
-                <hr />
-                @Html.Action("MostViewPosts", "Posts")
-                <hr />
-                @Html.Action("HighestPosts", "Posts")
-                <hr />
-                @Html.Action("PopularTags", "Tags")
-                <hr />
-            </div>
-        </div>
+        @RenderBody()
+
         @Html.Partial("_Footer")
     </div>
 
@@ -72,5 +71,18 @@
     @Scripts.Render("~/bundles/bootstrap")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/fontawesome.min.js" integrity="sha512-KCwrxBJebca0PPOaHELfqGtqkUlFUCuqCnmtydvBSTnJrBirJ55hRG5xcP4R9Rdx9Fz9IF3Yw6Rx40uhuAHR8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @RenderSection("scripts", required: false)
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/App_Themes/fantom/js/popper.js"></script>
+    <script src="~/App_Themes/fantom/js/stellar.js"></script>
+    <script src="~/App_Themes/fantom/vendors/lightbox/simpleLightbox.min.js"></script>
+    <script src="~/App_Themes/fantom/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="~/App_Themes/fantom/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="~/App_Themes/fantom/vendors/isotope/isotope-min.js"></script>
+    <script src="~/App_Themes/fantom/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/App_Themes/fantom/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="~/App_Themes/fantom/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/App_Themes/fantom/js/mail-script.js"></script>
+    <script src="~/App_Themes/fantom/js/theme.js"></script>
 </body>
 </html>

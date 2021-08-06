@@ -1,0 +1,23 @@
+﻿<div class="blog_right_sidebar">
+    <aside class="single_sidebar_widget search_widget">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Posts">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+            </span>
+        </div><!-- /input-group -->
+        <div class="br"></div>
+    </aside>
+    @Html.Partial("_AboutMe")
+    @Html.Action("LastestPosts", "Posts")
+    <hr />
+    @Html.Action("MostViewPosts", "Posts")
+    <hr />
+    @Html.Action("HighestPosts", "Posts")
+    <hr />
+    @Html.Action("PopularTags", "Tags")
+    <hr />
+    @Html.Action("CategoryRightMenu", "Categories")
+    <hr />
+</div>
+
