@@ -22,3 +22,7 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+.about-me-img{
+    width: 200px;
+    height: auto;
+}

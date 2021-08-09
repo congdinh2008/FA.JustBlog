@@ -1,11 +1,10 @@
 ﻿using FA.JustBlog.Data;
-using FA.JustBlog.Data.Infrastructure;
 using FA.JustBlog.Data.Infrastructure.BaseRepositories;
 using FA.JustBlog.Models.BaseEntities;
 using FA.JustBlog.Models.Common;
 using System.Threading.Tasks;
 
-namespace BookStore.Data.Infrastructure
+namespace FA.JustBlog.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -59,7 +58,7 @@ namespace BookStore.Data.Infrastructure
 
         public void Dispose()
         {
-            this._dbContext.Dispose();
+            _dbContext.Dispose();
         }
         #endregion
     }

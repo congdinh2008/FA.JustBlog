@@ -1,0 +1,114 @@
+﻿@model Paginated<Category>
+
+@{
+    ViewBag.Title = "Category Management";
+}
+
+<h2 class="text-center">Category Management</h2>
+<h3>@TempData["Message"]</h3>
+<hr />
+<div>
+    <a href="@Url.Action("Create", "CategoryManagement")" class="btn btn-primary float-left"><span class="fas fa-plus-square"></span></a>
+
+    <form action="@Url.Action("Index", "CategoryManagement")" method="get" class="form-inline float-right">
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control mr-3" id="inputSearch" name="SearchString" value="@ViewData["currentFilter"]" placeholder="Input....">
+            <button type="submit" class=" form-control btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+            <a href="@Url.Action("Index")" class="btn btn-default">
+                <i class="fas fa-redo"></i>
+            </a>
+        </div>
+    </form>
+</div>
+
+@if (!Model.Any())
+{
+    <h3 class="text-center">Don't have a category yet.</h3>
+}
+else
+{
+    <table class="table table-condensed table-bordered">
+        <tr class="d-flex">
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder = ViewData["NameSortParm"], currentFilter = ViewData["CurrentFilter"] })">Name</a>
+            </th>
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder = ViewData["UrlSlugSortParm"], currentFilter = ViewData["CurrentFilter"] })">Url Slug</a>
+            </th>
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder = ViewData["TotalPostsSortParm"], currentFilter = ViewData["CurrentFilter"] })">Total Posts</a>
+            </th>
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder = ViewData["InsertedAtSortParm"], currentFilter = ViewData["CurrentFilter"] })">Inserted At</a>
+            </th>
+            <th class="col-md-2">
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder = ViewData["UpdatedAtSortParm"], currentFilter = ViewData["CurrentFilter"] })">Updated At</a>
+            </th>
+            <th class="col-md-2">Manage</th>
+        </tr>
+
+        @foreach (var category in Model)
+        {
+            <tr class="d-flex">
+                <td class="col-md-2">
+                    <a href="@Url.Action("Details", new { id = category.Id})">
+                        @category.Name
+                    </a>
+                </td>
+                <td class="col-md-2">
+                    @category.UrlSlug
+                </td>
+                <td class="col-md-2">
+                    @Html.Raw(category.Posts.Count)
+                </td>
+                <td class="col-md-2">
+                    @category.InsertedAt
+                </td>
+                <td class="col-md-2">
+                    @category.UpdatedAt
+                </td>
+                <td class="col-md-2">
+                    <form action="@Url.Action("Delete", "CategoryManagement", new{ id = category.Id })" method="post">
+                        <a href="@Url.Action("Edit", "CategoryManagement", new { id = category.Id})" class="btn btn-primary">Edit</a>
+                        <button type="submit" onclick="return confirm('Are you sure to delete this category?');" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            @{
+                var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                ViewBag.PageRange = 3;
+            }
+            <li class="page-item">
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=1, currentFilter=ViewData["CurrentFilter"] })"
+                   class="btn page-link @prevDisabled"><<</a>
+            <li class="page-item">
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.PageIndex - 1 <= 0 ? 1 : Model.PageIndex - 1), currentFilter=ViewData["CurrentFilter"] })"
+                   class="btn page-link @prevDisabled"><</a>
+            </li>
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                if (i >= Model.PageIndex - ViewBag.PageRange && i <= Model.PageIndex + ViewBag.PageRange)
+                {
+                    <li class="page-item">
+                        <a class="@(i==Model.PageIndex ? "Current" : "") page-link"
+                           href="@Url.Action("Index", "CategoryManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=i, currentFilter=ViewData["CurrentFilter"] })">@i</a>
+                    </li>
+                }
+            }
+            <li class="page-item">
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.PageIndex + 1 > Model.TotalPages ? Model.TotalPages : Model.PageIndex + 1), currentFilter=ViewData["CurrentFilter"] })"
+                   class="btn page-link @nextDisabled">></a>
+            <li class="page-item">
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.TotalPages), currentFilter=ViewData["CurrentFilter"] })"
+                   class="btn page-link @nextDisabled">>></a>
+        </ul>
+    </nav>
+}

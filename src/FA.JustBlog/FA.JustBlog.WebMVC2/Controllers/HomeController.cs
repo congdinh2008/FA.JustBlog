@@ -1,7 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FA.JustBlog.Models.Common;
+using FA.JustBlog.Services;
+using System;
 using System.Linq;
-using System.Web;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace FA.JustBlog.WebMVC2.Controllers
@@ -9,9 +11,42 @@ namespace FA.JustBlog.WebMVC2.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly IPostServices _postServices;
+
+        public HomeController(IPostServices postServices)
         {
-            return View();
+            _postServices = postServices;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Index(string searchString, string currentFilter, int? pageIndex = 1, int? pageSize = 3)
+        {
+            ViewData["CurrentPageSize"] = pageSize;
+
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            // x => x.Name.Contains(searchString)
+            Expression<Func<Post, bool>> filter = null;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                filter = c => c.Title.Contains(searchString);
+            }
+
+            Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = x => x.OrderByDescending(p => p.PublishedDate);
+
+            var posts = await _postServices.GetAsync(filter: filter, orderBy: orderBy, pageIndex: pageIndex ?? 1, pageSize: pageSize ?? 3);
+
+            return View(posts);
         }
 
         public ActionResult About()

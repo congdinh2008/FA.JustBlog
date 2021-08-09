@@ -61,21 +61,15 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
+            <div class="col-md-3">
+                Left Menu
+            </div>
             <div class="col-md-9">
                 @RenderBody()
             </div>
-            <div class="col-md-3">
-                <form action="@Url.Action("Index", "Home")" method="get" class="form-inline float-right">
-                    <div class="form-group mx-sm-3 mb-2">
-                        <input type="text" class="form-control mr-3" id="inputSearch" name="SearchString" value="@ViewData["currentFilter"]" placeholder="Input....">
-                        <button type="submit" class="form-control btn btn-primary">
-                        </button>
-                    </div>
-                </form>
-                @Html.Partial("_AboutMe")
-            </div>
+            
         </div>
     </div>
 
