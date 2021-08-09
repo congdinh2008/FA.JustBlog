@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Appendix", "Appendix", "{1C
 		..\..\..\CPL_NET_04\BookStore\Migration.md = ..\..\..\CPL_NET_04\BookStore\Migration.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.WebMVC2", "FA.JustBlog.WebMVC2\FA.JustBlog.WebMVC2.csproj", "{7F5966FA-E353-4EA7-8658-9EF75286DD0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{3B6300C4-C8F9-41B6-A2C8-CBE93901D78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B6300C4-C8F9-41B6-A2C8-CBE93901D78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B6300C4-C8F9-41B6-A2C8-CBE93901D78D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F5966FA-E353-4EA7-8658-9EF75286DD0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5966FA-E353-4EA7-8658-9EF75286DD0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5966FA-E353-4EA7-8658-9EF75286DD0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5966FA-E353-4EA7-8658-9EF75286DD0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
