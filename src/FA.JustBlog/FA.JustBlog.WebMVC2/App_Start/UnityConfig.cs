@@ -1,8 +1,10 @@
 using FA.JustBlog.Data.Infrastructure;
 using FA.JustBlog.Services;
+using FA.JustBlog.WebMVC2.Controllers;
 using System;
 
 using Unity;
+using Unity.Injection;
 
 namespace FA.JustBlog.WebMVC2
 {
@@ -44,9 +46,12 @@ namespace FA.JustBlog.WebMVC2
 
             // TODO: Register your type's mappings here.
             container.RegisterType<IUnitOfWork, UnitOfWork>();
+            container.RegisterType<AccountController>( new InjectionConstructor());
+            container.RegisterType<ManageController>( new InjectionConstructor());
             container.RegisterType<ICategoryServices, CategoryServices>();
             container.RegisterType<ITagServices, TagServices>();
             container.RegisterType<IPostServices, PostServices>();
+
         }
     }
 }

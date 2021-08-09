@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace FA.JustBlog.WebMVC2.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         private readonly IPostServices _postServices;

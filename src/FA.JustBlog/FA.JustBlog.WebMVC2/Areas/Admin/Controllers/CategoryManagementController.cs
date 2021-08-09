@@ -3,7 +3,6 @@ using FA.JustBlog.Services;
 using FA.JustBlog.WebMVC2.Areas.Admin.ViewModels;
 using System;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
@@ -12,6 +11,7 @@ using System.Web.Mvc;
 
 namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin, Contributor")]
     public class CategoryManagementController : Controller
     {
         private readonly ICategoryServices _categoryServices;
@@ -20,6 +20,7 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
         {
             _categoryServices = categoryServices;
         }
+
         // GET: Admin/CategoryManagement
         public async Task<ActionResult> Index(string sortOrder, string currentFilter, string searchString,
             int? pageIndex = 1, int pageSize = 2)

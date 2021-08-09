@@ -68,6 +68,13 @@ namespace FA.JustBlog.Services
             return await _unitOfWork.PostRepository.GetQuery().Where(p => p.CategoryId == categoryId).ToListAsync();
         }
 
+        public async Task<Post> GetPostsByDateAndUrlSlugAsync(int year, int month, string urlSlug)
+        {
+            return await _unitOfWork.PostRepository.GetQuery()
+                .FirstOrDefaultAsync(x => x.PublishedDate.Year == year &&
+                                    x.PublishedDate.Month == month && x.UrlSlug == urlSlug);
+        }
+
         public async Task<IEnumerable<Post>> GetPostsByMonthAsync(DateTime monthYear)
         {
             return await _unitOfWork.PostRepository.GetQuery()

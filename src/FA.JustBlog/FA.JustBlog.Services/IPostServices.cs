@@ -13,6 +13,8 @@ namespace FA.JustBlog.Services
         Task<IEnumerable<Post>> GetLatestPostAsync(int size);
 
         Task<IEnumerable<Post>> GetPostsByMonthAsync(DateTime monthYear);
+        
+        Task<Post> GetPostsByDateAndUrlSlugAsync(int year, int month, string urlSlug);
 
         Task<int> CountPostsForCategoryAsync(string category);
 

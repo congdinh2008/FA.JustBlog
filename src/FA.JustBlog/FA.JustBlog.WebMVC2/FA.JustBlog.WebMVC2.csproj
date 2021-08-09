@@ -203,6 +203,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -233,7 +235,6 @@
     <Content Include="Assets\js\modernizr-2.8.3.js" />
     <Content Include="Assets\js\popper.min.js" />
     <Content Include="Assets\js\respond.min.js" />
-    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="readme.txt" />
@@ -310,6 +311,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_AboutMe.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Tags\_ListPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

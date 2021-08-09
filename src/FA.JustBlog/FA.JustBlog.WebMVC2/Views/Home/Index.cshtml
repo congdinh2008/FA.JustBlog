@@ -5,7 +5,7 @@
 
 @foreach (var item in Model)
 {
-    <h1>@item.Title</h1>
+    <a href="@Url.Action("Details", "Posts", new { year = item.PublishedDate.Year, month=item.PublishedDate.Month.ToString("D2"), urlSlug=item.UrlSlug +"-"+ item.Id})">@item.Title</a>
 }
 
 <nav aria-label="Page navigation example">
