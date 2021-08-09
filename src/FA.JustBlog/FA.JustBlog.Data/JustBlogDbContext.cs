@@ -1,16 +1,29 @@
 ﻿using FA.JustBlog.Models.BaseEntities;
 using FA.JustBlog.Models.Common;
+using FA.JustBlog.Models.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace FA.JustBlog.Data
 {
-    public class JustBlogDbContext : DbContext
+    public class JustBlogDbContext : IdentityDbContext<User>
     {
         public JustBlogDbContext() : base("JustBlogDbConn")
         {
+        }
+
+        static JustBlogDbContext()
+        {
+            // Set the database initializer which is run once during application start
+            // This seeds the database with admin user credentials and admin role
             Database.SetInitializer(new DbInitializer());
+        }
+
+        public static JustBlogDbContext Create()
+        {
+            return new JustBlogDbContext();
         }
 
         public DbSet<Category> Categories { get; set; }

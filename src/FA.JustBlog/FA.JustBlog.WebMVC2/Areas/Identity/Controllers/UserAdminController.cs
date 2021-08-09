@@ -1,5 +1,5 @@
+using FA.JustBlog.Models.Security;
 using FA.JustBlog.WebMVC2.Areas.Identity.ViewModels;
-using FA.JustBlog.WebMVC2.Models;
 using FA.JustBlog.WebMVC2.ViewModels;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity;
@@ -92,7 +92,7 @@ namespace FA.JustBlog.WebMVC2.Areas.Identity.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = userViewModel.Email, Email = userViewModel.Email };
+                var user = new User { UserName = userViewModel.Email, Email = userViewModel.Email };
                 var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
 
                 //Add User to the selected Roles 

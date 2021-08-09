@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace FA.JustBlog.WebMVC2.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
