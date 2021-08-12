@@ -16,6 +16,7 @@ using FA.JustBlog.WebMVC.ViewModels;
 
 namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
 {
+    [Authorize]
     public class TagManagementController : Controller
     {
         private readonly ITagServices _tagServices;
@@ -25,6 +26,7 @@ namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
             _tagServices = tagServices;
         }
 
+        [HttpGet]
         public async Task<ActionResult> Index(string sortOrder, string currentFilter, string searchString,
              int? pageIndex = 1, int pageSize = 2)
         {

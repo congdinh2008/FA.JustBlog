@@ -85,49 +85,47 @@
                     </div>
                 </div>
                 <div class="comments-area">
-                    <h4>@Model.Comments.Count @(Model.Comments.Count <= 1 ? "Comment" : "Comments")</h4>
-                    @foreach (var item in Model.Comments)
-                    {
-                        <div class="comment-list">
+                    <div class="comment-list">
+                        <h4>@Model.Comments.Count @(Model.Comments.Count <= 1 ? "Comment" : "Comments")</h4>
+                        @foreach (var item in Model.Comments)
+                        {
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="user justify-content-between d-flex">
                                     <div class="thumb">
                                         <img src="img/blog/c1.jpg" alt="">
                                     </div>
                                     <div class="desc">
-                                        <h5><a href="#">Emilly Blunt</a></h5>
-                                        <p class="date">December 4, 2017 at 3:12 pm </p>
+                                        <h5><a href="#">@item.Name</a></h5>
+                                        <p class="date">@item.CommentTime </p>
                                         <p class="comment">
-                                            Never say goodbye till the end comes!
+                                            @item.CommentText
                                         </p>
                                     </div>
                                 </div>
-                                <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">reply</a>
-                                </div>
                             </div>
-                        </div>
-                    }
+                        }
+                    </div>
 
                 </div>
                 <div class="comment-form">
-                    <h4>Leave a Reply</h4>
+                    <h4>Leave a comment</h4>
                     <form>
+                        @Html.HiddenFor(x => x.Id, new { id = "post-id" })
                         <div class="form-group form-inline">
                             <div class="form-group col-lg-6 col-md-6 name">
-                                <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
                             </div>
                             <div class="form-group col-lg-6 col-md-6 email">
-                                <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                            <input type="text" class="form-control" id="comment-header" name="commentHeader" placeholder="Enter comment header" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Comment Header'">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                            <textarea class="form-control mb-10" rows="5" id="comment-text" name="commentText" placeholder="Enter comment" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
                         </div>
-                        <a href="#" class="primary-btn submit_btn">Post Comment</a>
+                        <button type="button" id="submit-comment" class="primary-btn submit_btn">Comment</button>
                     </form>
                 </div>
             </div>
@@ -140,3 +138,54 @@
     </div>
 </section>
 <!--================Blog Area =================-->
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $("#submit-comment").click(() => {
+                var postId = $("#post-id").val();
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var commentHeader = $("#comment-header").val();
+                var commentText = $("#comment-text").val();
+                // validate input value
+
+                var comment = {
+                    postId: postId,
+                    name: name,
+                    email: email,
+                    commentHeader: commentHeader,
+                    commentText: commentText
+                }
+                $.post({
+                    url: "/Posts/Comment",
+                    data: comment,
+                    success: data => {
+                        console.log(data);
+                        $(".comment-list").append(`
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="img/blog/c1.jpg" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <h5><a href="#">${data.Name}</a></h5>
+                                        <p class="date">${data.CommentTime} </p>
+                                        <p class="comment">
+                                            ${data.CommentText}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                          `);
+
+                    },
+                    error: data => {
+                        console.log(data)
+                    }
+                });
+            })
+        });
+    </script>
+}

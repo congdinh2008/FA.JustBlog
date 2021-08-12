@@ -17,7 +17,7 @@
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
             <div>
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", id = "input-title" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.UrlSlug, htmlAttributes: new { @class = "control-label" })
             <div>
-                @Html.EditorFor(model => model.UrlSlug, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.UrlSlug, new { htmlAttributes = new { @class = "form-control", @readonly = true, id = "input-urlslug" } })
                 @Html.ValidationMessageFor(model => model.UrlSlug, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -95,5 +95,9 @@
         $(document).ready(function () {
             $('.select-tag-multiple').select2();
         });
+    </script>
+
+    <script src="~/assets/js/convert-url-slug.js">
+        
     </script>
 } 
