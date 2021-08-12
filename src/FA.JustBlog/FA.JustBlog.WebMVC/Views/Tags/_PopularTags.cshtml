@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<Tag>
 
-<h3>Tag Clouds</h3>
-
-@foreach (var item in Model)
-{
-    <a href="@Url.Action("Details", "Tags", new { id = item.Id})" class="btn rounded-pill bg-info mb-2">
-        @item.Name
-    </a>
-}
+<aside class="single-sidebar-widget tag_cloud_widget">
+    <h4 class="widget_title">Tag Clouds</h4>
+    <ul class="list">
+        @foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("Details", "Tags", new { id = item.Id})">@item.Name</a></li>
+        }
+    </ul>
+</aside>

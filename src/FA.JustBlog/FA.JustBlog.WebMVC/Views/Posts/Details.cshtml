@@ -3,5 +3,189 @@
     ViewBag.Title = Model.Title;
 }
 
-<h1>@Model.Title</h1>
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>@Model.Title</h2>
+                <div class="page_link">
+                    <a href="index.html">Home</a>
+                    <a href="single-blog.html">Post Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<!--================Blog Area =================-->
+<section class="blog_area p_120 single-post-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="main_blog_details">
+                    <img class="img-fluid" src="~/assets/img/home-blog/@Model.ImageUrl" alt="">
+                    <a href="#"><h4>@Model.Title</h4></a>
+                    <div class="user_details">
+                        <div class="float-left">
+                            <a href="#">@Model.Category.Name</a>
+                        </div>
+                        <div class="float-right">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h5>Mark wiens</h5>
+                                    <p>12 Dec, 2017 11:21 am</p>
+                                </div>
+                                <div class="d-flex">
+                                    <img src="img/blog/user-img.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.Raw(@Model.PostContent)
+                    <div class="news_d_footer">
+                        <a href="#"><i class="lnr lnr lnr-heart"></i>Lily and 4 people like this</a>
+                        <a class="justify-content-center ml-auto" href="#"><i class="lnr lnr lnr-bubble"></i>06 Comments</a>
+                        <div class="news_socail ml-auto">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="#"><i class="fa fa-rss"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-area">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                            <div class="thumb">
+                                <a href="#"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+                            </div>
+                            <div class="arrow">
+                                <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                            </div>
+                            <div class="detials">
+                                <p>Prev Post</p>
+                                <a href="#"><h4>Space The Final Frontier</h4></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                            <div class="detials">
+                                <p>Next Post</p>
+                                <a href="#"><h4>Telescopes 101</h4></a>
+                            </div>
+                            <div class="arrow">
+                                <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                            </div>
+                            <div class="thumb">
+                                <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comments-area">
+                    <div class="comment-list">
+                        <h4>@Model.Comments.Count @(Model.Comments.Count <= 1 ? "Comment" : "Comments")</h4>
+                        @foreach (var item in Model.Comments)
+                        {
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="img/blog/c1.jpg" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <h5><a href="#">@item.Name</a></h5>
+                                        <p class="date">@item.CommentTime </p>
+                                        <p class="comment">
+                                            @item.CommentText
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
 
+                </div>
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form>
+                        @Html.HiddenFor(x => x.Id, new { id = "post-id" })
+                        <div class="form-group form-inline">
+                            <div class="form-group col-lg-6 col-md-6 name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="comment-header" name="commentHeader" placeholder="Enter comment header" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Comment Header'">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control mb-10" rows="5" id="comment-text" name="commentText" placeholder="Enter comment" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                        </div>
+                        <button type="button" id="submit-comment" class="primary-btn submit_btn">Comment</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    @Html.Partial("_RightMenu")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $("#submit-comment").click(() => {
+                var postId = $("#post-id").val();
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var commentHeader = $("#comment-header").val();
+                var commentText = $("#comment-text").val();
+                // validate input value
+
+                var comment = {
+                    postId: postId,
+                    name: name,
+                    email: email,
+                    commentHeader: commentHeader,
+                    commentText: commentText
+                }
+                $.post({
+                    url: "/Posts/Comment",
+                    data: comment,
+                    success: data => {
+                        console.log(data);
+                        $(".comment-list").append(`
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="img/blog/c1.jpg" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <h5><a href="#">${data.Name}</a></h5>
+                                        <p class="date">${data.CommentTime} </p>
+                                        <p class="comment">
+                                            ${data.CommentText}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                          `);
+
+                    },
+                    error: data => {
+                        console.log(data)
+                    }
+                });
+            })
+        });
+    </script>
+}

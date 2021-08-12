@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Post>
+<aside class="single_sidebar_widget popular_post_widget">
+    <h3 class="widget_title">Popular Posts</h3>
+    @foreach (var item in Model)
+    {
+        <div class="media post_item">
+            <img src="~/assets/img/home-blog/@(string.IsNullOrEmpty(item.ImageUrl)?"blog-1.jpg":item.ImageUrl)" width="100" height="60" alt="post">
+            <div class="media-body">
+                <a href="blog-details.html"><h3>@item.Title</h3></a>
+                <p>02 Hours ago</p>
+            </div>
+        </div>
+    }
+    <div class="br"></div>
+</aside>

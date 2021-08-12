@@ -1,0 +1,16 @@
+.left-menu{
+    min-width: 250px;
+    /* min-height: 100vh; */
+    margin-right: 20px;
+    background-color: rgb(201, 193, 193);
+}
+
+.post-header{
+    position: relative;
+}
+
+.post-header div.title{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+}
