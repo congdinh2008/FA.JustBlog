@@ -38,6 +38,18 @@ namespace FA.JustBlog.Services
             return await _unitOfWork.SaveChangesAsync();
         }
 
+        public override int Add(Comment entity)
+        {
+            entity.CommentTime = DateTime.Now;
+            return base.Add(entity);
+        }
+
+        public override Task<int> AddAsync(Comment entity)
+        {
+            entity.CommentTime = DateTime.Now;
+            return base.AddAsync(entity);
+        }
+
         public Task<IEnumerable<Comment>> GetCommentForPostAsync(Post post)
         {
             throw new NotImplementedException();

@@ -15,6 +15,7 @@ using FA.JustBlog.WebMVC.ViewModels;
 
 namespace FA.JustBlog.WebMVC.Areas.Admin.Controllers
 {
+    [Authorize]
     public class CategoryManagementController : Controller
     {
         private readonly ICategoryServices _categoryServices;

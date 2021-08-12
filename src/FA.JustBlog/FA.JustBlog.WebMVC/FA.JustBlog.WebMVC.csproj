@@ -195,6 +195,7 @@
     <Compile Include="Areas\Admin\Controllers\PostManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagManagementController.cs" />
     <Compile Include="Areas\Admin\ViewModels\BaseViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\CommentViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\PostViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TagViewModel.cs" />
     <Compile Include="Areas\Identity\Controllers\RolesAdminController.cs" />
@@ -969,6 +970,7 @@
     <Content Include="assets\js\ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="assets\js\ckeditor\styles.js" />
     <Content Include="assets\js\contact.js" />
+    <Content Include="assets\js\convert-url-slug.js" />
     <Content Include="assets\js\gmaps.min.js" />
     <Content Include="assets\js\jquery-3.2.1.min.js" />
     <Content Include="assets\js\jquery-3.4.1.js" />
@@ -1173,6 +1175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

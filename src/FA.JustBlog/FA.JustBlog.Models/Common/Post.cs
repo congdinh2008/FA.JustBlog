@@ -37,7 +37,7 @@ namespace FA.JustBlog.Models.Common
 
         public int TotalRate { get; set; }
 
-        public decimal Rate { get => TotalRate / RateCount; }
+        public decimal Rate => RateCount == 0 ? 0 : TotalRate / RateCount;
 
         [ForeignKey("Category")]
         public Guid CategoryId { get; set; }
