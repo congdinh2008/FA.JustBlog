@@ -12,6 +12,8 @@ namespace FA.JustBlog.Data
     {
         public JustBlogDbContext() : base("JustBlogDbConn")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         static JustBlogDbContext()
