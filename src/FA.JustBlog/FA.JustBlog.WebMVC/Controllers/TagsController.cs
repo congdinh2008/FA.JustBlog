@@ -24,7 +24,7 @@ namespace FA.JustBlog.WebMVC.Controllers
             var tag =  await _tagServices.GetByIdAsync(id);
             var posts = await _postServices.GetPostsByTagAsync(id);
             ViewBag.TagName = tag.Name;
-            return View(posts);
+            return View("_ListPost", posts);
         }
 
         public ActionResult PopularTags()
