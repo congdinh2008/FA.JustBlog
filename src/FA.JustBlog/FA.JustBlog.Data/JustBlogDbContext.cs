@@ -10,8 +10,10 @@ namespace FA.JustBlog.Data
 {
     public class JustBlogDbContext : IdentityDbContext<User>
     {
-        public JustBlogDbContext() : base("JustBlogDbConn")
+        public JustBlogDbContext() : base("JustBlogConn")
         {
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
 
         static JustBlogDbContext()

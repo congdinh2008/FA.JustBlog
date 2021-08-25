@@ -5,6 +5,11 @@ namespace FA.JustBlog.Models.BaseEntities
 {
     public class BaseEntity : IBaseEntity
     {
+        public BaseEntity()
+        {
+            IsDeleted = false;  
+        }
+
         public Guid Id { get; set; }
 
         [Display(Name = "Is Deleted")]

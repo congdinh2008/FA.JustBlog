@@ -25,13 +25,17 @@ namespace FA.JustBlog.Services.BaseServices
 
         Task<bool> DeleteAsync(Guid id);
 
+        bool Delete(TEntity entity);
+
+        Task<bool> DeleteAsync(TEntity entity);
+
         TEntity GetById(Guid id);
 
         Task<TEntity> GetByIdAsync(Guid id);
 
-        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll(bool isIncludeDeleted = false);
 
-        Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<IEnumerable<TEntity>> GetAllAsync(bool isIncludeDeleted = false);
 
         /// <summary>
         /// Return entities with paging, filtering, ordering
