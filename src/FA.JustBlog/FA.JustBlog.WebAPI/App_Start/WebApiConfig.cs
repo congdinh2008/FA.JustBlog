@@ -20,6 +20,8 @@ namespace FA.JustBlog.WebAPI
             config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling
                 = PreserveReferencesHandling.None;
 
+            config.EnableCors();
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

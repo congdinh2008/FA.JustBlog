@@ -1,0 +1,22 @@
+<h1>{{title}}</h1>
+
+<section class="categories-list">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories; let i = index" [ngClass]="i%2==0?'table-warning':''">
+                <td>{{category.Id}}</td>
+                <td>{{category.Name}}</td>
+                <td>{{category.Description}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<button (click)="createNewCategory()">Create</button>

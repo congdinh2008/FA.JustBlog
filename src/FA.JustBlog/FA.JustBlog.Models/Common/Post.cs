@@ -37,6 +37,7 @@ namespace FA.JustBlog.Models.Common
 
         public int TotalRate { get; set; }
 
+        [NotMapped]
         public decimal Rate => RateCount == 0 ? 0 : TotalRate / RateCount;
 
         [ForeignKey("Category")]
