@@ -18,3 +18,17 @@
 /src/FA.JustBlog/.vs/FA.JustBlog/v16
 /src/FA.JustBlog/FA.JustBlog.WebAPI/bin
 /src/FA.JustBlog/FA.JustBlog.WebAPI/obj/Debug
+/src/server/.vs/FA.JustBlog
+/src/server/FA.JustBlog.Common/bin/Debug
+/src/server/FA.JustBlog.Common/obj/Debug
+/src/server/FA.JustBlog.Data/bin/Debug
+/src/server/FA.JustBlog.Data/obj/Debug
+/src/server/FA.JustBlog.Models/bin/Debug
+/src/server/FA.JustBlog.Models/obj/Debug
+/src/server/FA.JustBlog.Services/bin/Debug
+/src/server/FA.JustBlog.Services/obj/Debug
+/src/server/FA.JustBlog.WebAPI/bin
+/src/server/FA.JustBlog.WebAPI/obj/Debug
+/src/server/FA.JustBlog.WebMVC2/bin
+/src/server/FA.JustBlog.WebMVC2/obj/Debug
+/src/server/packages
