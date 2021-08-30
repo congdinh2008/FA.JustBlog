@@ -35,3 +35,7 @@
 /src/core/FA.JustBlog/.vs/FA.JustBlog
 /src/core/FA.JustBlog/FA.JustBlog.API/bin
 /src/core/FA.JustBlog/FA.JustBlog.API/obj
+/src/core/FA.JustBlog/FA.JustBlog.Data/bin/Debug/net5.0
+/src/core/FA.JustBlog/FA.JustBlog.Data/obj
+/src/core/FA.JustBlog/FA.JustBlog.Models/bin/Debug/net5.0
+/src/core/FA.JustBlog/FA.JustBlog.Models/obj

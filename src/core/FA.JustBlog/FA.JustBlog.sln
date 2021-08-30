@@ -5,6 +5,15 @@ VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.API", "FA.JustBlog.API\FA.JustBlog.API.csproj", "{21B3F230-6099-4F7F-A523-2F5D12A72FEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.Models", "FA.JustBlog.Models\FA.JustBlog.Models.csproj", "{F6DBB4C4-8F33-42C9-8F7D-0605025FA093}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.Data", "FA.JustBlog.Data\FA.JustBlog.Data.csproj", "{329A4DE9-4926-459A-B57F-B5EDF5790FCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Readme", "Readme", "{660EBC14-A96B-40C0-B6D1-5B8080EC02AB}"
+	ProjectSection(SolutionItems) = preProject
+		Migration.md = Migration.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +24,14 @@ Global
 		{21B3F230-6099-4F7F-A523-2F5D12A72FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21B3F230-6099-4F7F-A523-2F5D12A72FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21B3F230-6099-4F7F-A523-2F5D12A72FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6DBB4C4-8F33-42C9-8F7D-0605025FA093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DBB4C4-8F33-42C9-8F7D-0605025FA093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DBB4C4-8F33-42C9-8F7D-0605025FA093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DBB4C4-8F33-42C9-8F7D-0605025FA093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{329A4DE9-4926-459A-B57F-B5EDF5790FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329A4DE9-4926-459A-B57F-B5EDF5790FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329A4DE9-4926-459A-B57F-B5EDF5790FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329A4DE9-4926-459A-B57F-B5EDF5790FCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,11 @@
+using FA.JustBlog.Data;
+using FA.JustBlog.Models.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,6 +32,12 @@ namespace FA.JustBlog.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<JustBlogDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("JustBlogConn")));
+
+            services.AddIdentity<User, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<JustBlogDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddControllers()
                  .AddNewtonsoftJson(options =>
@@ -46,13 +56,20 @@ namespace FA.JustBlog.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            JustBlogDbContext context,
+            UserManager<User> userManager,
+            RoleManager<IdentityRole<Guid>> roleManager
+            )
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FA.JustBlog.API v1"));
+                SeedData.Seed(context, userManager, roleManager);
             }
 
             app.UseHttpsRedirection();

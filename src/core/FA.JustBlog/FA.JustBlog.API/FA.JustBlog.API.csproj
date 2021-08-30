@@ -6,7 +6,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.9" />
+    <PackageReference Include="microsoft.entityframeworkcore.design" Version="5.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="5.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FA.JustBlog.Data\FA.JustBlog.Data.csproj" />
   </ItemGroup>
 
 </Project>
