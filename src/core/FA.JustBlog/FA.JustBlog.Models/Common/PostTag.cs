@@ -1,9 +1,10 @@
-﻿using System;
+﻿using FA.JustBlog.Models.BaseEntities;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FA.JustBlog.Models.Common
 {
-    public class PostTag
+    public class PostTag: BaseEntity
     {
         [ForeignKey("Post")]
         public Guid PostId { get; set; }

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FA.JustBlog.Data\FA.JustBlog.Data.csproj" />
+    <ProjectReference Include="..\FA.JustBlog.Models\FA.JustBlog.Models.csproj" />
+  </ItemGroup>
+
+</Project>

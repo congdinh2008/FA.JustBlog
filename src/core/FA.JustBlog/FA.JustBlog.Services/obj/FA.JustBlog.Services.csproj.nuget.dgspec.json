@@ -1,0 +1,203 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Services\\FA.JustBlog.Services.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Data\\FA.JustBlog.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Data\\FA.JustBlog.Data.csproj",
+        "projectName": "FA.JustBlog.Data",
+        "projectPath": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Data\\FA.JustBlog.Data.csproj",
+        "packagesPath": "C:\\Users\\congd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\congd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Models\\FA.JustBlog.Models.csproj": {
+                "projectPath": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Models\\FA.JustBlog.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "microsoft.entityframeworkcore.tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Models\\FA.JustBlog.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Models\\FA.JustBlog.Models.csproj",
+        "projectName": "FA.JustBlog.Models",
+        "projectPath": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Models\\FA.JustBlog.Models.csproj",
+        "packagesPath": "C:\\Users\\congd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\congd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Services\\FA.JustBlog.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Services\\FA.JustBlog.Services.csproj",
+        "projectName": "FA.JustBlog.Services",
+        "projectPath": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Services\\FA.JustBlog.Services.csproj",
+        "packagesPath": "C:\\Users\\congd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\congd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Data\\FA.JustBlog.Data.csproj": {
+                "projectPath": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Data\\FA.JustBlog.Data.csproj"
+              },
+              "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Models\\FA.JustBlog.Models.csproj": {
+                "projectPath": "C:\\Users\\congd\\source\\repos\\demo\\FA.JustBlog\\src\\core\\FA.JustBlog\\FA.JustBlog.Models\\FA.JustBlog.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

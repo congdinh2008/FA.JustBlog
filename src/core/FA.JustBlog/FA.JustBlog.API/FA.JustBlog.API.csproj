@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FA.JustBlog.Data\FA.JustBlog.Data.csproj" />
+    <ProjectReference Include="..\FA.JustBlog.Services\FA.JustBlog.Services.csproj" />
   </ItemGroup>
 
 </Project>

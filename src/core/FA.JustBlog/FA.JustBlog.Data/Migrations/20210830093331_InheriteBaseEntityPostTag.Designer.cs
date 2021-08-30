@@ -4,14 +4,16 @@ using FA.JustBlog.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FA.JustBlog.Data.Migrations
 {
     [DbContext(typeof(JustBlogDbContext))]
-    partial class JustBlogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210830093331_InheriteBaseEntityPostTag")]
+    partial class InheriteBaseEntityPostTag
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

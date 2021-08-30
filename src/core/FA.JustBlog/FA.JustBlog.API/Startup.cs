@@ -1,5 +1,7 @@
 using FA.JustBlog.Data;
+using FA.JustBlog.Data.Infrastructure;
 using FA.JustBlog.Models.Security;
+using FA.JustBlog.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -53,6 +55,12 @@ namespace FA.JustBlog.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FA.JustBlog.API", Version = "v1" });
             });
+
+            #region Config DI
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICategoryServices, CategoryServices>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,7 +77,7 @@ namespace FA.JustBlog.API
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FA.JustBlog.API v1"));
-                SeedData.Seed(context, userManager, roleManager);
+                //SeedData.Seed(context, userManager, roleManager);
             }
 
             app.UseHttpsRedirection();

@@ -1,0 +1,17 @@
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\obj\Debug\net5.0\FA.JustBlog.Services.csproj.AssemblyReference.cache
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\obj\Debug\net5.0\FA.JustBlog.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\obj\Debug\net5.0\FA.JustBlog.Services.AssemblyInfoInputs.cache
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\obj\Debug\net5.0\FA.JustBlog.Services.AssemblyInfo.cs
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\obj\Debug\net5.0\FA.JustBlog.Services.csproj.CoreCompileInputs.cache
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\bin\Debug\net5.0\FA.JustBlog.Services.deps.json
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\bin\Debug\net5.0\FA.JustBlog.Services.dll
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\bin\Debug\net5.0\ref\FA.JustBlog.Services.dll
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\bin\Debug\net5.0\FA.JustBlog.Services.pdb
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\bin\Debug\net5.0\FA.JustBlog.Data.dll
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\bin\Debug\net5.0\FA.JustBlog.Models.dll
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\bin\Debug\net5.0\FA.JustBlog.Data.pdb
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\bin\Debug\net5.0\FA.JustBlog.Models.pdb
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\obj\Debug\net5.0\FA.JustBlog.Services.csproj.CopyComplete
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\obj\Debug\net5.0\FA.JustBlog.Services.dll
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\obj\Debug\net5.0\ref\FA.JustBlog.Services.dll
+C:\Users\congd\source\repos\demo\FA.JustBlog\src\core\FA.JustBlog\FA.JustBlog.Services\obj\Debug\net5.0\FA.JustBlog.Services.pdb
