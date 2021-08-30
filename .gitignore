@@ -32,3 +32,6 @@
 /src/server/FA.JustBlog.WebMVC2/bin
 /src/server/FA.JustBlog.WebMVC2/obj/Debug
 /src/server/packages
+/src/core/FA.JustBlog/.vs/FA.JustBlog
+/src/core/FA.JustBlog/FA.JustBlog.API/bin
+/src/core/FA.JustBlog/FA.JustBlog.API/obj
